@@ -1,0 +1,5 @@
+For using User sessions Redis no-sql database will be implemented.
+Links:-
+http://code.hootsuite.com/mysql-to-redis/
+
+https://stackoverflow.com/questions/10278683/how-safe-it-is-to-store-session-with-redis

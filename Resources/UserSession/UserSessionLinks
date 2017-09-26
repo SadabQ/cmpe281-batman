@@ -19,3 +19,19 @@ https://www.npmjs.com/package/redis-sessions
 https://piwik.org/faq/how-to/faq_20521/
 
 Amazon ElastiCache is a service that provides an easy way to build a highly resilient Redis setup with primary/secondary in multiple zones with automated failover.
+
+
+Three Redis Data Structures
+
+First, we need a Redis LIST to accrete the events. 
+In essence this accumulates the line items, or log style events, under a combined user/session key.
+
+Second, we need a Redis SET of all the known sessions.
+It's mostly a bookeeping set of userSessionKeys for both active sessions and ready to be processed sessions.
+The ready to process userSessionKeys will be removed in the post processing step.
+
+Third, we need a volatile Redis KEY which disappears after a certain amount of time. 
+This can be done in a straightforward manner by calling EXPIRE on a sentinel key. 
+This sentinel key is just the userSessionKey, "user1:session1" in this example, plus ":timeout".
+If this sentinel key doesn't exist and the userSessionKey is in the known_sessions set then we can deduce that this session has timed out.
+Once it has timed out, the userSessionKey LIST is then ready to be processed and eventually flushed from Redis.

@@ -17,3 +17,5 @@ https://www.compose.com/articles/how-to-persist-user-sessions-without-much-effor
 https://www.npmjs.com/package/redis-sessions
 
 https://piwik.org/faq/how-to/faq_20521/
+
+Amazon ElastiCache is a service that provides an easy way to build a highly resilient Redis setup with primary/secondary in multiple zones with automated failover.

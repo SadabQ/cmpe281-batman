@@ -4,9 +4,13 @@ http://code.hootsuite.com/mysql-to-redis/
 
 https://stackoverflow.com/questions/10278683/how-safe-it-is-to-store-session-with-redis
 
-
+Session handling-
 https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/
 
 https://codeforgeek.com/2014/09/manage-session-using-node-js-express-4/
 
 https://www.compose.com/articles/how-to-persist-user-sessions-without-much-effort/
+
+https://www.npmjs.com/package/redis-sessions
+
+https://piwik.org/faq/how-to/faq_20521/

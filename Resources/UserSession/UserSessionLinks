@@ -6,8 +6,11 @@ https://stackoverflow.com/questions/10278683/how-safe-it-is-to-store-session-wit
 
 Session handling-
 https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/
-
 https://codeforgeek.com/2014/09/manage-session-using-node-js-express-4/
+https://aws.amazon.com/caching/session-management/
+https://ceyhunozgun.blogspot.com/2017/04/storing-user-sessions-in-redis-using-elasticache.html
+http://code.hootsuite.com/mysql-to-redis/
+https://medium.com/aws-activate-startup-blog/scaling-on-aws-part-2-10k-users-8ad391a56de6
 
 https://www.compose.com/articles/how-to-persist-user-sessions-without-much-effort/
 

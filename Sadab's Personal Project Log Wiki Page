@@ -10,3 +10,6 @@ Week 2
 
 We communicated on the progress made and discussed on the common architecture such as application node, UI node, and task node. 
 Also discussed on the requirement of message passing between the micro-services.
+
+Created issues pertaining to requirement of coming up system and subsystem design. This would help in identifying common areas 
+and basic components.

@@ -23,5 +23,17 @@ services
 
 Research Cassandra	Utsav Jain, 
 			Sadab Qureshi		Completed	19th September		25th September
+			
+
+Week 2:
+
+Work done:
+Team progressed on the understanding the assigned data domains and respective NoSQL datastore.
+
+Plan for next week:
+Each team member will work on high level architecture of the subsystem and discuss on architecture of the whole system.
+
+Blocker:
+No blocker identified.
 
 

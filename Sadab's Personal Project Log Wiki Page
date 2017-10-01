@@ -13,3 +13,5 @@ Also discussed on the requirement of message passing between the micro-services.
 
 Created issues pertaining to requirement of coming up with system and subsystem design. This would help in identifying common areas 
 and basic components.
+
+Added High Level architecture design for User activity logging Subsystem to present the idea of the subsytem. 

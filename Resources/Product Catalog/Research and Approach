@@ -2,4 +2,7 @@
 Database research for MongoDB:
 Points to ponder:
 1. Pros and Conns of using MongoDB as database for product catalog.
-2. Research on ppplication of MongoDB with teh project perspective.
+2. Research on application of MongoDB with teh project perspective.
+
+
+Understood the backend REST API flow. Working on comapring framework to be used for Java REST API

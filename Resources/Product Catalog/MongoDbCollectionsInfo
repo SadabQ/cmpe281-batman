@@ -1,0 +1,24 @@
+Mongo Database Collections Information
+=======================================
+Note : Its a first draft and needs more clarity
+
+Product Catalog
+	1) Item Name
+	2) Description
+	3) Tags
+	4) Price
+	5) Quantity
+		
+User Profiles
+	1) User ID
+	2) Name 
+	3) Password
+	4) Shipping Address
+	5) Contact Information
+	
+Orders
+	1) Order Number
+	2) Items  (Name , Qty , Price)
+	3) Total Amount
+	4) User ID
+	5) Order Creation Data

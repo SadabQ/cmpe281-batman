@@ -1,0 +1,14 @@
+2017-10-07 21:52:18,239 [Worker-2] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: CassandraDemo:CassandraDemo:0.0.1-SNAPSHOT @ /Users/coss/Documents/281Git/cmpe281-batman/user-activity-log/CassandraDemo/pom.xml.
+2017-10-07 21:52:20,146 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-07 21:52:20,179 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/coss/Documents/281Git/cmpe281-batman/user-activity-log/CassandraDemo/src/main/resources
+2017-10-07 21:52:20,711 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-07 21:52:20,712 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/coss/Documents/281Git/cmpe281-batman/user-activity-log/CassandraDemo/src/test/resources
+2017-10-07 21:52:20,712 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: CassandraDemo:CassandraDemo:0.0.1-SNAPSHOT @ /Users/coss/Documents/281Git/cmpe281-batman/user-activity-log/CassandraDemo/pom.xml.
+2017-10-07 21:52:27,161 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-07 21:52:27,163 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/coss/Documents/281Git/cmpe281-batman/user-activity-log/CassandraDemo/src/main/resources
+2017-10-07 21:52:27,166 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-07 21:52:27,166 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/coss/Documents/281Git/cmpe281-batman/user-activity-log/CassandraDemo/src/test/resources
+2017-10-07 21:53:38,631 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-07 21:53:38,633 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/coss/Documents/281Git/cmpe281-batman/user-activity-log/CassandraDemo/src/main/resources
+2017-10-07 21:53:38,635 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-07 21:53:38,636 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/coss/Documents/281Git/cmpe281-batman/user-activity-log/CassandraDemo/src/test/resources

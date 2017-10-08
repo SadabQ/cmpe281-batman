@@ -12,5 +12,5 @@ After collecting feedback from all, we decided to create a small POC(a small wor
 
 Week 3: During the third meet, I got feedback from all members regarding the technology we are going to use in designing our backend services and after intensive discussion we decided to use Node.js instead of Java frameworks. 
 Also for now, we decided on the domain to create an website like Amazon, where products will be from one store unlike Google Express.
-We came up with a rough high level architecture design for User Activity logs using Cassandra.
+We came up with a rough high level architecture design for User Activity logs using Cassandra and MongoDb Database.
 

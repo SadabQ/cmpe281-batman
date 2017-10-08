@@ -10,7 +10,7 @@ public class GettingStarted {
 
 		// Connect to the cluster and keyspace "demo"
   	cluster = Cluster.builder().addContactPoint("127.0.0.1").build();
-  	session = cluster.connect("killrvideo");
+  	session = cluster.connect("killrvideo"); // created in local cassandra instance
 
 		// Insert one record into the users table
 		session.execute("INSERT INTO users (lastname, age, city, email, firstname) VALUES ('Jones', 35, 'Austin', 'bob@example.com', 'Bob')");

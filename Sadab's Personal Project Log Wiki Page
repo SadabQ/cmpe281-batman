@@ -18,3 +18,5 @@ Added High Level architecture design for User activity logging Subsystem.
 
 Week 3
 Discussed on the data modelling for the user activity log module.
+Install Cassandra and created cluster. Developed sample cassandra application and added to git.
+Started working on identifying application workflow.

@@ -4,3 +4,4 @@ Week-1: Introduction of team members and discuss the overview of the project. We
 
 Week-2: Discussed the individual backend progress in the project.
 week 3- Discussed architectural design.
+Week 4 - setting up redis and tried some redis commands.

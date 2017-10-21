@@ -1,0 +1,72 @@
+npm install redis-sessions
+Basics
+
+Every session belongs to an app (e.g. webapp, app_cust123).
+create: A session is created by supplying the app and an id (usually the unique id of the user). A token will be returned.
+get: A session is queried with the app and token.
+set: Additional data (key/value) can be stored in the session.
+kill: A session can be killed with the app and token.
+killall: All sessions of an app can be killed.
+Additional methods
+
+activity: Get the amount of active sessions of an app within the last n seconds.
+soid: Get all sessions of a single id.
+killsoid: Kill all sessions that belong to a single id. E.g. log out user123 on all devices.
+soapp: Get an array of all sessions of an app which were active within the last n seconds.
+Automatic cleanup of old sessions.
+Performance
+
+With Redis running on the same machine as the test script (run via npm test) on a 2011 iMac:
+
+Creates 1000 sessions in around 170ms.
+Gets those 1000 sessions and validates them in around 155ms.
+Removes those 1000 sessions in 18ms.
+
+RedisSessions = require("redis-sessions");
+//
+// Parameters for RedisSession:
+//
+// e.g. rs = new RedisSession({host:"192.168.0.20"});
+//
+// `port`: *optional* Default: 6379. The Redis port.
+// `host`, *optional* Default: "127.0.0.1". The Redis host.
+// `options`, *optional* Default: {}. Additional options. See: https://github.com/mranney/node_redis#rediscreateclientport-host-options
+// `namespace`: *optional* Default: "rs". The namespace prefix for all Redis keys used by this module.
+// `wipe`: *optional* Default: 600. The interval in seconds after which expired sessions are wiped. Only values `0` or greater than `10` allowed. Set to `0` to disable.
+// `client`: *optional* An external RedisClient object which will be used for the connection.
+//
+rs = new RedisSessions();
+ 
+rsapp = "myapp";
+
+
+
+
+Create a session
+Parameters:
+
+app (String) The app id (namespace) for this session.
+id (String) The user id of this user. Note: There can be multiple sessions for the same user id. If the user uses multiple client devices.
+ip (String) IP address of the user. This is used to show all ips from which the user is logged in.
+ttl (Number) optional The "Time-To-Live" for the session in seconds. Default: 7200.
+d (Object) optional Additional data to set for this sessions. (see the "set" method)
+ 
+// Set a session for `user1001`
+ 
+rs.create({
+  app: rsapp,
+  id: "user1001",
+  ip: "192.168.22.58",
+  ttl: 3600,
+  d: { 
+    foo: "bar",
+    unread_msgs: 34
+  }
+  },
+  function(err, resp) {
+    // resp should be something like 
+    // {token: "r30kKwv3sA6ExrJ9OmLSm4Wo3nt9MQA1yG94wn6ByFbNrVWhcwAyOM7Zhfxqh8fe"}
+  });
+  
+  https://github.com/smrchy/rest-sessions
+  https://helpx.adobe.com/coldfusion/2016/external-session-storage.html

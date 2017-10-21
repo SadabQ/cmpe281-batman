@@ -37,3 +37,14 @@ This can be done in a straightforward manner by calling EXPIRE on a sentinel key
 This sentinel key is just the userSessionKey, "user1:session1" in this example, plus ":timeout".
 If this sentinel key doesn't exist and the userSessionKey is in the known_sessions set then we can deduce that this session has timed out.
 Once it has timed out, the userSessionKey LIST is then ready to be processed and eventually flushed from Redis.
+
+
+
+If you want to persist your shopping cart so it stays alive between logins and even in different browsers then a serverside store is really the only way to go.
+
+Client side frameworks might be able to store the shopping cart in local storage but a) that doesn't work between different browsers and b) that can still be lost if the user cleans the storage.
+
+For your 'datastore' you could use a database, perhaps using something like hibernate or eclipselink to automate interaction, or you could implement a filestore or even an in-memory clustered store such as redis. It depends on your requirements.
+
+Really, you should get more information on what you want to achieve, maybe read a book on web application design for the basics. As it is your question is really a bit too broad.
+

@@ -36,4 +36,12 @@
 }
 
 
-product-catalog-using-mongodb-4-638.jpg
+----- 
+A product has at least the following information:
+
+Item: the overall product info (e.g. Levi’s 501)
+Variant: a specific variant of an item (e.g. in black size 6) which typically has a specific SKU / UPC
+Price: price information may vary based on the store, the variant, etc
+Hierarchy: the item taxonomy
+Facet: facets to search products by
+Vendors: a given sku may be available through different vendors if the site is a marketplace

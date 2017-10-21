@@ -47,4 +47,4 @@ Client side frameworks might be able to store the shopping cart in local storage
 For your 'datastore' you could use a database, perhaps using something like hibernate or eclipselink to automate interaction, or you could implement a filestore or even an in-memory clustered store such as redis. It depends on your requirements.
 
 Really, you should get more information on what you want to achieve, maybe read a book on web application design for the basics. As it is your question is really a bit too broad.
-
+https://redislabs.com/ebook/part-1-getting-started/chapter-2-anatomy-of-a-redis-web-application/2-2-shopping-carts-in-redis/

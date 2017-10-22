@@ -4,4 +4,4 @@ Reference:https://academy.datastax.com/resources/getting-started-apache-cassandr
 Create session
 Create cluster with default settings.
 
-Creates Users with data.
+Created Users with data.

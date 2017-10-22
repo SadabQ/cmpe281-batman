@@ -2,7 +2,7 @@ Setting Up the Single test instance EC2 server for installing mongo-db:
 ----------------------------------------------------------------------------
 
 1. Installing Mongo-db:
-	a.Make a pachage in : /etc/yum.repos.d/mongodb-org-3.0.repo
+	a.Make a package in : /etc/yum.repos.d/mongodb-org-3.0.repo
 	b.Use the following repo file :
 			[mongodb-org-3.0]
 			name=MongoDB Repository

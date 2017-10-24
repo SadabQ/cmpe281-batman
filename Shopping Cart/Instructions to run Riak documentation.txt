@@ -1,0 +1,6 @@
+1. Open folder 
+2. Go to terminal 
+3. Run hugo server
+4. Go to localhost:1313
+
+Note : latest docs will not work. You will need to specify version.

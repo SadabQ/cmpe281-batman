@@ -3,17 +3,20 @@
 //var http = require('http');
 var express = require('express'),
     cons = require('consolidate'),
-    mongodb = require('mongodb');
+    MongoClient = require('mongodb').MongoClient;
 	
 	
-	app = express();
+app = express();
 
 
 //var server = http.createServer(function(request, response) {
 		//response.writeHead(200, {"Content-Type": "text/plain"});
 		//response.end("Hello, World");
 //});
-
+MongoClient.connect('mongodb://localhost:27017/cmpe281', function(err,db){
+	console.log("Successfully connected to MongoDB.");
+}
+		    
 app.get('/', function(req,res) {
 	res.send('Hello World');
 });

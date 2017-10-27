@@ -1,0 +1,16 @@
+{
+  "name": "helloworldapi",
+  "version": "1.0.0",
+  "description": "This is a hello world application for API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Utsav Jain",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.12.1"
+  }
+}

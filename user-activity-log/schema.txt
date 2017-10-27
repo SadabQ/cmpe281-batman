@@ -1,0 +1,17 @@
+CREATE TABLE user_activity (
+username varchar,
+Interaction_time timeuuid,
+activity_code varchar,
+Detail varchar,
+PRIMARY KEY (username, interaction_time)
+) WITH CLUSTERING ORDER BY (interaction_time DESC);
+
+
+CREATE TABLE user_activity_history (
+Username varchar,
+Interaction_date varchar,
+Interaction_time timeuuid,
+activity_code varchar,
+Detail varchar,
+PRIMARY KEY ((username, interaction_date), interaction_time)
+);

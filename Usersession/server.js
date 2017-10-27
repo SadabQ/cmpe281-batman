@@ -16,3 +16,22 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }));
+app.post('/login',function(req,res){
+    // when user login set the key to redis.
+    req.session.key=req.body.email;
+    res.end('done');
+});
+
+app.get('/logout',function(req,res){
+    req.session.destroy(function(err){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect('/');
+        }
+    });
+});
+
+app.listen(3000,function(){
+    console.log("App Started on PORT 3000");
+});

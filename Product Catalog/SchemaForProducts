@@ -1,0 +1,27 @@
+SCHEMA FOR PRODUCTS:
+
+Schema({
+    title: { type: String, required: true, trim: true },
+    price: { type: Number, required: true, min: 0 },
+    stock: { type: Number, default: 1 },
+    description: String,
+    imageBin: { data: Buffer, contentType: String },
+    imageUrl: String,
+    categories: [{ type: String }]
+})
+
+
+
+CUSTOMER COLLECTION STRUCTURE :
+
+email: String (Required)
+password: String (Required)
+firstname : String
+lastname : String
+address : { addrline1 : String,
+            addrline2 : String,
+            city : String,
+            state : String,
+            zip : String,
+            country : String }
+contactnumber : String

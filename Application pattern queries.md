@@ -7,3 +7,6 @@ Q5 - Load basic user information
 Q6 - Find recent product search for the user
 Q7 - Add/Remove items to/from shopping cart
 Q8 - Comments by user
+
+
+Refer Application data flow diagram.

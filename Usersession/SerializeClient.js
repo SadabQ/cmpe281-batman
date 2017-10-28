@@ -7,3 +7,11 @@ function serializeClient(req, res, next) {
       if (err) {
         return next(err);
       }
+      // we store information needed in req.user
+      req.user.clientId = client.id;
+      next();
+    });
+  } else {
+    next();
+  }
+}

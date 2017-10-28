@@ -1,0 +1,16 @@
+{
+  "name": "mymongodbapp",
+  "version": "1.0.0",
+  "description": "connect to mongodb from nodejs app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Suchi",
+  "license": "ISC",
+  "dependencies": {
+    "consolidate": "^0.14.5",
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33"
+  }
+}

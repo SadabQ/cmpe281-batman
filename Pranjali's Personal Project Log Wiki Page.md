@@ -7,3 +7,5 @@ Week2: Last meeting came up with no mutual perceptions for a few architecture. T
 Week3: Team worked together to come up with finalizing the technology stack and the architecture.
 
 Week4: Kickoff for work and teams started with implementation
+
+Week5: Discussed the progress of individual work and helped members with better implementation ideas that were happily accepted with justifying feasibility.

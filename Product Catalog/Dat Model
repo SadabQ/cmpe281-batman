@@ -1,0 +1,58 @@
+Item: the overall product info (e.g. Levi’s 501)
+   Variant: a specific variant of an item (e.g. in black size 6) which typically has a specific SKU / UPC
+   Price: price information may vary based on the store, the variant, etc
+   Hierarchy: the item taxonomy
+   Facet: facets to search products by
+   Vendors: a given sku may be available through different vendors if the site is a marketplace
+
+
+_id: the product id
+lastUpdated: useful timestamp to see recently updated
+category: the category path made up of hierarchy nodes
+name: the product name
+lname: a lower-case version of the name. This can be useful for doing case-insensitive matching with an index
+brand: the brand
+desc: list of descriptions (website, retail box, etc)
+assets: list of assets (images, etc)
+attrs: list of attributes as name-value pairs. Will be used to implement facetting. Note that the brand is also included as one attribute.
+variants: some information on variants, but not the variants themselves
+
+Below is the model that will be used for products display
+{
+    "_id": "05458452563",
+    "name": "Width:Medium,Color:Ivory,Shoe Size:6.5",
+    "lname": "width:medium,color:ivory,shoe size:6.5",
+    "itemId": "054VA72303012P",
+    "altIds": {
+        "upc": "632576103580"
+    },
+    "assets": {
+        "imgs": [
+            {
+                "width": "1900",
+                "height": "1900",
+                "src": "http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_945348512"
+            },
+            {
+                "width": "1900",
+                "height": "1900",
+                "src": "http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_945348612"
+            }
+        ]
+    },
+    "attrs": [
+        {
+            "name": "Width",
+            "value": "Medium"
+        },
+        {
+            "name": "Color",
+            "family": "White",
+            "value": "Ivory"
+        },
+        {
+            "name": "6.5",
+            "value": "6.5"
+        }
+    ]
+}

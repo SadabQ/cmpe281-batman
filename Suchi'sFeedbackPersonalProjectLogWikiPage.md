@@ -19,3 +19,6 @@ We came up with a rough high level architecture design for User Activity logs us
 
 Week 4:
 During the fourth meet, we came up with a more detailed high level diagram for product catalog and user activity logs view. Created Amazon ec2 instance and configured it and installed MongoDb on the instance. For the coming week, we have decided to establish a mongo-db ecosystem with proper configuration.
+
+Week 5:
+During the fifth meet, Discussed Application data flow of user activity logs and discussed mapped application pattern queries. Research and  initial set up for the application is done. After getting feedback of progress made by all team members, we came up with better implementation ideas and decided to start with the development. 

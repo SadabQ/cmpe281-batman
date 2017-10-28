@@ -1,3 +1,4 @@
+//use refresh tokens in node.js for permanent user sessions
 function serializeClient(req, res, next) {  
   if (req.query.permanent === 'true') {
     db.client.updateOrCreate({

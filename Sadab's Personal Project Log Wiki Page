@@ -25,3 +25,9 @@ Week 4
 Discussed on the applicatiom workflow with the team.
 Progessed on the hign level architecture of user level activity log.
 Creted new brach for user activity module
+
+Week 5
+
+Discussed on the access patterns for the application to identify query patterns for the application.
+Came up with draft of the application data flow and mapped query patterns to it. This will give clear picture to the team to 
+develop essential Rest end points.

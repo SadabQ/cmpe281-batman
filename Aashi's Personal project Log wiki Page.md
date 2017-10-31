@@ -8,4 +8,6 @@ week 3- Discussed architectural design.
 
 Week 4 - setting up redis and tried some redis commands.Implementing Redis session for Shopping cart.
 
+Week 5 - Implementation of the project has been started and is at its initial level. During last meet, every member discussed their progress and milestones before next week meetup.
+
 

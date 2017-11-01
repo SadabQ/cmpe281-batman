@@ -3,7 +3,8 @@
 //var http = require('http');
 var express = require('express'),
     cons = require('consolidate'),
-    MongoClient = require('mongodb').MongoClient;
+    MongoClient = require('mongodb').MongoClient 
+	assert = require('assert');
 	
 	
 app = express();
@@ -13,9 +14,16 @@ app = express();
 		//response.writeHead(200, {"Content-Type": "text/plain"});
 		//response.end("Hello, World");
 //});
-MongoClient.connect('mongodb://localhost:27017/cmpe281', function(err,db){
-	console.log("Successfully connected to MongoDB.");
-}
+//MongoClient.connect('mongodb://localhost:27017/cmpe281', function(err,db){
+	//console.log("Successfully connected to MongoDB.");
+//}
+
+var url = 'mongodb://suchi:1234@ec2-54-67-119-111.us-west-1.compute.amazonaws.com:27017/cmpe281';
+		MongoClient.connect(url, function(err, db) {
+  		assert.equal(null, err);
+  		console.log("Connected correctly to server.");
+  		db.close();
+		});
 		    
 app.get('/', function(req,res) {
 	res.send('Hello World');

@@ -58,3 +58,5 @@ For your 'datastore' you could use a database, perhaps using something like hibe
 
 Really, you should get more information on what you want to achieve, maybe read a book on web application design for the basics. As it is your question is really a bit too broad.
 
+http://nodewebapps.com/2017/06/18/how-do-nodejs-sessions-work/
+https://deliveroo.engineering/2016/10/07/optimising-session-key-storage.html

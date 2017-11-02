@@ -1,0 +1,23 @@
+
+
+Functionalities:
+1.	Display cart
+2.	Add items
+3.	Remove items
+4.	Edit quantity of items
+5.	Update the status if becomes unavailable later
+6.	Return policy of the item
+7.	Show total cost (including all delivery charges and tax distributions)
+8.	Allow guest checkouts or not?
+9.	User information
+Each item contains following fields:
+Product id, Product name, Description, Quantity
+
+Shopping Cart Abandonment
+•	Problem: customers don’t want to pay unexpected extra costs
+Solution: communicate all additional costs upfront and avoid any hidden or small-print charges. There’s nothing more frustrating for a consumer than to go through all the checkout process only to discover they’re hit by outrageous shipping charges. They will never come back.
+•	Problem: customers don’t want to create a new account in order to checkout 
+Solution: although collecting data about your customers is a critical component of your store’s success, do not force buyers to create an account with you or you’ll end up losing them. The best solution is to provide a guest checkout or social logins (Facebook, LinkedIn, Gmail, etc) option alongside your usual “create an account” solution and let the customer choose. You can always ask for more details later on.
+•	Problem: customers find the checkout process too long
+Solution: you may not be able to actually reduce the number of steps in the checkout process, but you can eliminate shopper frustration by adding a visually appealing progress bar to your checkout page to provide constant progress updates and make the customer feel in control.
+

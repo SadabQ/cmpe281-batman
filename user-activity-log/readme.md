@@ -11,3 +11,4 @@ Created Users with data.
 https://academy.datastax.com/resources/ds101-introduction-cassandra
 https://academy.datastax.com/resources/ds201-foundations-apache-cassandra
 https://academy.datastax.com/resources/ds220-data-modeling
+https://www.hakkalabs.co/articles/cassandra-data-modeling-guide

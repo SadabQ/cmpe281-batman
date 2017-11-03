@@ -1,0 +1,8 @@
+Recommendation engine using Neo4j:
+
+Types of recommendations we are covering: 
+1.	Collaborative filtering: (Other prople also bought)An algorithm that considers users interations with products with the assumption that other users will behave the similar way.
+Data Model (Expressed as Graph) : Customers and related products
+ 
+2.	Content Based: (You may also like)An algorithm that considers similarities between products and categories of products.
+Data Model : Products as Categories and sub categories.

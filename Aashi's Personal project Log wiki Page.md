@@ -10,4 +10,6 @@ Week 4 - setting up redis and tried some redis commands.Implementing Redis sessi
 
 Week 5 - Implementation of the project has been started and is at its initial level. During last meet, every member discussed their progress and milestones before next week meetup.
 
+Week 6 - During last meet, every member developed small POC of thier work and discussed issues they faced.
+
 

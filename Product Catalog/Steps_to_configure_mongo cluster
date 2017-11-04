@@ -1,0 +1,12 @@
+1)Configuring the mongo cluster using the replica sets on aws.
+
+	a)Setup the 3 node cluster in the aws in different AZ's using subnet.
+	b)On all the nodes check for the runnig mongod instances using : ps -eaf | grep 'mongod'
+	c)Stop the mongod service.
+	d)Now run the mongod using the following command on all the instances:
+		mongod --port 27017 --dbpath /var/lib/mongo --replSet rs0
+	e)Now connect to the mongo instance by issuing command 'mongo'
+	f)To initiate the replica set use : rs.initiate()
+	g)This will become the primary node. To add the other two nodes as secondary use:
+		rs.add("<hostname><:port>")
+	h)We can check the status of the replica set by issuing the command: rs.status()

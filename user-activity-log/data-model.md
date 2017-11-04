@@ -38,6 +38,7 @@ PRIMARY KEY ((username, interaction_time), product_id)
 )
 
 product_activity_cart_user
+
 CREATE TABLE product_added_cart_user (
 username varchar,
 product_id varchar,
@@ -45,4 +46,14 @@ Interaction_time timeuuid,
 quantity varchar,
 action varchar,
 PRIMARY KEY ((username, interaction_time), product_id)
+)
+
+product_purchased_user
+
+CREATE TABLE product_added_cart_user (
+username varchar,
+product_id varchar,
+purchased_time timeuuid,
+quantity varchar,
+PRIMARY KEY (( product_id, purchased_time), username
 )

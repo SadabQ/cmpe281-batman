@@ -22,3 +22,6 @@ During the fourth meet, we came up with a more detailed high level diagram for p
 
 Week 5:
 During the fifth meet, Discussed Application data flow of user activity logs and discussed mapped application pattern queries. Research and  initial set up for the application is done. After getting feedback of progress made by all team members, we came up with better implementation ideas and decided to start with the development. 
+
+Week6:
+During the sixth meet, got feedback from all team members and decided the domain of our website. Since, our team name is Batman, with everyone's consent we decided to show Batman  merchandise like Batman shirt, mugs, Wall Hanging, Bags, toys, lamps, shoes, caps, Watches etc. Also, Discussed everyone's progress on their application domain and research.

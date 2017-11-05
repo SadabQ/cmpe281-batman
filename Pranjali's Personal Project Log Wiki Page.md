@@ -9,3 +9,5 @@ Week3: Team worked together to come up with finalizing the technology stack and 
 Week4: Kickoff for work and teams started with implementation
 
 Week5: Discussed the progress of individual work and helped members with better implementation ideas that were happily accepted with justifying feasibility.
+
+Week6: One of our backend was started with a technology where we had showstopper and we discussed for the possible solution and came around with a mutual consent to stick with the same backend technology as earlier it was planned to switch to other.

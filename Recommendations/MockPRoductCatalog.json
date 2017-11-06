@@ -1,0 +1,96 @@
+// Although each document in mongodb can have different fields, but since we are only creating a mock database for our neo4j, we can follow a single convention for the fields and can call it schema
+// Schema({
+
+//     title: { type: String, required: true, trim: true },
+
+//     price: { type: Number, required: true, min: 0 },
+
+//     stock: { type: Number, default: 1 },
+
+//     description: String,
+
+//     imageBin: { data: Buffer, contentType: String },
+
+//     imageUrl: String,
+
+//     categories: [{ type: String }]
+
+// })
+{
+	"title" : "adidas Originals Women's Superstar W Fashion Sneaker",
+	"price" : "$179.99",
+	"stock" : "13",
+	"description" : "Leather/Synthetic Rubber sole Retro-inspired sneaker featuring classic rubber shell toe Breathable mesh liner",
+	"imageBin" : "This is just sample because I dont know what is imageBin",
+	"imageUrl" : "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/3982934_fpx.tif??op_sharpen=1&fit=fit,1&$filterlrg$&wid=1200&hei=1467",
+	"categories" : "Shoes"
+}
+
+{
+	"title" : "Steve Madden",
+	"price" : "$118.00",
+	"stock" : "12",
+	"description" : "Steve Madden Women's Ecentrcq Slip-On Fashion Sneaker",
+	"imageBin" : "This is just sample because I dont know what is imageBin",
+	"imageUrl" : "https://images-na.ssl-images-amazon.com/images/I/81YSJCG3WqL._UL1500_.jpg",
+	"categories" : "Shoes"
+}
+
+{
+	"title" : "Sketcher comfortable shoes",
+	"price" : "$102.00",
+	"stock" : "13",
+	"description" : "Skechers Sport Women's D'Lites Original Non-Memory Foam Lace-Up Sneaker",
+	"imageBin" : "This is just sample because I dont know what is imageBin",
+	"imageUrl" : "https://images-na.ssl-images-amazon.com/images/I/71C8lGbNjQL._UL1500_.jpg",
+	"categories" : "Shoes"
+}
+
+{
+	"title" : "adidas Originals",
+	"price" : "$104.97",
+	"stock" : "13",
+	"description" : "adidas NEO Women's Cloudfoam Advantage W Fashion Sneaker",
+	"imageBin" : "This is just sample because I dont know what is imageBin",
+	"imageUrl" : "https://images-na.ssl-images-amazon.com/images/I/71YsiOVwocL._UL1500_.jpg",
+	"categories" : "Shoes"
+}
+
+{
+	"title" : "SIFINI",
+	"price" : "$22.29",
+	"stock" : "13",
+	"description" : "SIFINI Women Fashion Top Handle Satchel Handbags Shoulder Bag Tote Purse Crossbody Bag",
+	"imageBin" : "This is just sample because I dont know what is imageBin",
+	"imageUrl" : "https://images-na.ssl-images-amazon.com/images/I/71HWOz-mj2L._UL1500_.jpg",
+	"categories" : "HandBag"
+}
+
+{
+	"title" : "Jack&Chris",
+	"price" : "$44.97",
+	"stock" : "13",
+	"description" : "New Arrival Leather Satchel Purses and Handbags Shoulder Tote Crossbody Bag for Women, WBDZ023",
+	"imageBin" : "This is just sample because I dont know what is imageBin",
+	"imageUrl" : "https://images-na.ssl-images-amazon.com/images/I/8175dWe5dRL._UL1500_.jpg",
+	"categories" : "HandBag"
+}
+
+{
+	"title" : "Cartier",
+	"price" : "$54.97",
+	"stock" : "13",
+	"description" : "Cartier Women's W6920084 Ballon Bleu Analog Display Quartz Silver-Tone Watch",
+	"imageBin" : "This is just sample because I dont know what is imageBin",
+	"imageUrl" : "https://images-na.ssl-images-amazon.com/images/I/81jdfMcwY0L._UL1500_.jpg",
+	"categories" : "Watches"
+}
+{
+	"title" : "Chopard",
+	"price" : "$12,899.00",
+	"stock" : "13",
+	"description" : "Chopard Imperiale Silver Dial Steel and Rose Gold Ladies Watch 388532-6004",
+	"imageBin" : "This is just sample because I dont know what is imageBin",
+	"imageUrl" : "https://images-na.ssl-images-amazon.com/images/I/41IiNtfYuJL.jpg",
+	"categories" : "Watches"
+}

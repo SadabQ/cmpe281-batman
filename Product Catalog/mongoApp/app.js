@@ -21,7 +21,7 @@ app = express();
 var url = 'mongodb://suchi:1234@ec2-54-67-119-111.us-west-1.compute.amazonaws.com:27017/cmpe281';
 		MongoClient.connect(url, function(err, db) {
   		assert.equal(null, err);
-  		console.log("Connected correctly to server.");
+  		console.log("Connected to MongoDb server.");
   		db.close();
 		});
 		    

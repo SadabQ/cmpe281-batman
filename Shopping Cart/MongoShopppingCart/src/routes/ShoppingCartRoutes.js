@@ -1,4 +1,13 @@
-import { addNewProduct } from '../controllers/shoppingcartController';
+import {
+  addNewProduct,
+  getProducts,
+  getProductWithID,
+  updateProduct,
+  deleteProduct,
+  getCartWithEmail,
+  updateCartWithEmail,
+  deleteCartWithEmail
+ } from '../controllers/shoppingcartController';
 const routes = (app) => {
   app.route('/product')
   .get((req, res, next) => {
@@ -6,17 +15,24 @@ const routes = (app) => {
     console.log(`Request from ${req.originalUrl}`)
     console.log(`Request from ${req.method}`)
     next();
-  }, (req, res, next) => {
-    res.send('GET request successfull!!!');
-  })
+  }, getProducts)
+
+  //POST Endpoint
   .post(addNewProduct);
 
   app.route('/product/:productID')
-  .put((req, res)=>
-  res.send('PUT request successfull!!'))
+  .get(getProductWithID)
 
-  .delete((req, res)=>
-  res.send('DELETE request successfull!!'));
+  .put(updateProduct)
+
+  .delete(deleteProduct);
 }
+  /*app.route('shoppingCart/:email')
+  .get(getCartWithEmail)
 
+  .put(updateCartWithEmail)
+
+  .delete(deleteCartWithEmail);
+}
+*/
 export default routes;

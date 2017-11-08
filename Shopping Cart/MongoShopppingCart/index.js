@@ -8,10 +8,12 @@ const PORT = 3000;
 //mongoose connection
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/ProductCatalogue', {
+var ProductCatalogueConnection = mongoose.connect('mongodb://localhost/ProductCatalogue', {
   useMongoClient: true
 });
-
+var ShoppingCartConnection = mongoose.connect('mongodb://localhost/ShoppingCart', {
+  useMongoClient: true
+});
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 

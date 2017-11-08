@@ -26,5 +26,21 @@ export  const ProductSchema = new Schema({
   },
   stock:{
     type:Number
+  },
+  description:{
+    type:String
+  },
+  imageURL:{
+    type:String
   }
 });
+
+/*export const ShopingCartSchema = new Schema({
+  email:{
+      type:Number
+  },
+  productList:{
+    type:String,
+    default : ""
+  }
+});*/

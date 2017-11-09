@@ -1,0 +1,28 @@
+Download node and npm.
+Check for the versions of node and npm:
+$ node -v
+v8.5.0
+$ npm -v
+5.3.0
+Creating project skeleton
+$ cd ~/Recommendation/Codes
+$ mkdir RecommendationEngine
+$ cd RecommendationEngine
+
+Create a package.json file and save into this folder. Contents of package.json are in the attached package.json file in the RecommendationEngine folder.
+
+Create app.js in the same folder as package.json
+Go to the path that contains app.js and package.json and say:
+$npm install
+this installs all the dependency modules.
+TO start the app, say:
+Node app.js
+Neo4j has already been installed (dockerized). We can connect to neo4j from our Nodejs in 2 ways.
+1.	Using the Neo4j javascript driver. Or,
+2.	Using HTTP call only.
+Lets follow the 2nd approach. For this, we need to have ‘request’ module into our node-modules. Either go to node-modules folder and say :
+$ npm install request. Or, 
+Update the package.json, add:
+“request” : “*”
+and again say npm install.
+

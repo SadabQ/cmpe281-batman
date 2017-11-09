@@ -1,0 +1,20 @@
+Introduction
+
+When a user uses web pages in a given browser, a user session is created by the server and the session ID is managed internally during the web session of the user. For example, when a user viewed three pages and logs out, this is termed as one web session. The HTTP protocol is stateless, so the server and the browser should have a way of storing the identity of each user session. Each HTTP request-response between the client and application happens on a separate TCP connection. Each request to the web server is executed independently without any knowledge of any previous requests. Hence it is very important to store & manage the web session of a user.
+
+Below is the typical example for session scenarios in real world web application:
+
+    The user’s browser send the first request to the server.
+    The server checks whether the browser has passed along the browser cookie that contained session information.
+    If the server does not ‘know’ the client
+        The server creates a new unique identifier and puts it in a Map (roughly), as a key, whose value is the newly created Session. It also sends a cookie response containing the unique identifier.
+        The browser stores the session cookie containing the unique identifier and uses it for each subsequent request to identify itself uniquely with web server
+    If the server already knows the client – the server obtains the session data corresponding to the passed unique identifier found in the session cookie and serves the requested page. The data is typically stored in server memory and looked upon each request via session key.
+
+
+Example: In most shopping cart applications, when a user adds an item to their cart and continues browsing the site, a session is created and stored on the server side.
+On-Premise Web Server Architecture
+
+    Load Balancing: Load Balancing automatically distributes the incoming traffic across multiple instances attached to the load balancer.
+    Application/WebTier: It controls application functionality by performing detailed processing such as calculation or making decisions. This layer typically communicates with all other parts of the architecture such as a database, caching, queue, web service calls, etc. The process data will be provided back to presentation layer i.e. web server which serves the web pages.
+    Database-Tier: This is the persistent layer which will have RDBMS servers where information is stored and retrieved. The information is then passed back to the logic tier for processing and then eventually back to the user. In some older architectures, sessions were handled at Database Tier.

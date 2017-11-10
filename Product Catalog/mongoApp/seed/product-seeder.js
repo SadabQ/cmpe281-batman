@@ -7,10 +7,10 @@ var mongoose = require('mongoose');
 var products = [
     new Product({
         imagePath: "https://s1.postimg.org/9rgb2jbadn/Bag1.jpg",
-        name:"Batman Bagpack Black",
+        name:"DC Comics Batman with Logo Black Tactical Backpack",
         price: 60,
         stock: 100,
-        categories: ['bags','LaptopBag','black bag'],
+        categories: ['bags','LaptopBag','black bag','BagPack'],
 		description: "Polyester/PU Blend, Measures Approx 19 x 17 x 7, Fits up to a 15inch laptop "
     }),
      new Product({
@@ -18,7 +18,7 @@ var products = [
         name:"Batman High Capacity LaptopBag",
         price: 40,
         stock: 100,
-        categories: ['bags','LaptopBag','black bag'],
+        categories: ['bags','LaptopBag','black bag','BagPack'],
 		description: "Cool and creative design, Fits up to a 15inch laptop "
     }),
     new Product({
@@ -27,7 +27,7 @@ var products = [
         price: 30,
         stock: 100,
         categories: ['bags','School Bag','black bag','kids'],
-		description: "Perfect gift choice for your kids;You could also use it to travel.It is eyecatching"
+		description: "Perfect gift choice for your kids.You could also use it to travel.It is eyecatching"
     }),
     new Product({
         imagePath: "https://s1.postimg.org/zz2pqgfij/Bag4.jpg",
@@ -43,7 +43,7 @@ var products = [
         price: 25,
         stock: 100,
         categories: ['bags','School Bag','yellow bag','kids'],
-		description: "Size: 11.8' L x 4.7'W x 16.5' H school bagpack"
+		description: "Size: 11.8inch  L x 4.7inch W x 16.5inch H school bagpack"
     }),
     new Product({
         imagePath: "https://s1.postimg.org/51b244ldqj/Bag6.jpg",
@@ -59,30 +59,30 @@ var products = [
         price: 53,
         stock: 100,
         categories: ['bags','LaptopBag','black bag'],
-		description: "Size: 11.8' L x 4.7'W x 16.5' H Laptop bagpack"
+		description: "Size: 11.8inch L x 4.7inch W x 16.5inch H Laptop bagpack"
     }),
 	    new Product({
         imagePath: "https://s1.postimg.org/1vvk56rlyz/Bag8.jpg",
-        name:"Sling Batman Bag",
+        name:"The Dark Knight Batman Logo Laptop Messenger Bag Daypack Stone Washed & Black",
         price: 35,
         stock: 100,
-        categories: ['bags','Sling Bag','black bag','Women'],
+        categories: ['bags','Messenger Bag','black bag','Women'],
 		description: "Contains small hang loop for locker or closet hanging."
     }),
 	    new Product({
         imagePath: "https://s1.postimg.org/8aa60s8fxn/Bag9.jpg",
         name:"Batman Symbol Logo Tote/Messenger Bag",
-        price: 43,
+        price: 49,
         stock: 100,
         categories: ['bags','Sling Bag','black bag','Women'],
-		description: "Batman Symbol Logo Messenger Bag"
+		description: "Better Built Messenger bags are built to last."
     }),
 	    new Product({
         imagePath: "https://s1.postimg.org/8oglrnhlnv/Bag10.jpg",
         name:"Travel Backpack",
         price: 65,
         stock: 100,
-        categories: ['bags','Travel Bag','black bag','men'],
+        categories: ['bags','Travel Bag','black bag','Men','Women'],
 		description: "Holds a lot more than just your laptop"
     }),
 	    new Product({
@@ -91,7 +91,7 @@ var products = [
         price: 48,
         stock: 100,
         categories: ['bags','Sling Bag','black bag','Women'],
-		description: "Approximately 14' long (not including length of strap) and 14.5' wide"
+		description: "This Beautiful bag was created using Batman designs on black cotton fabric."
     }),
 		new Product({
         imagePath: "https://s1.postimg.org/2h57rhmpez/Bag12.jpg",
@@ -99,25 +99,25 @@ var products = [
         price: 26,
         stock: 100,
         categories: ['bags','Sling Bag','black bag','Women'],
-		description: "Approximately 14' long (not including length of strap) and 14.5' wide"
+		description: "A versatile cotton canvas messenger bag with many uses. It works well as a school bag, travel carry-all, or even a diaper bag. Spacious and comfortable to carry with two inside pockets, two outside pockets, and 2' wide adjustable shoulder strap with Brass hardware."
     }),
 		new Product({
         imagePath: "https://s1.postimg.org/3noj03djgb/Bag13.jpg",
-        name:"Batman Symbol Logo Graphic Messenger Bag",
+        name:"DC Comics Batman Black Backpack with Black Bat Logo",
         price: 56,
         stock: 100,
-        categories: ['bags','Sling Bag','black bag','Women'],
-		description: "Approximately 14' long (not including length of strap) and 14.5' wide"
+        categories: ['bags','Backpack','black bag','Women','Men'],
+		description: "Black messenger bag from DC Comics featuring a large rubber Batman logo patch and ballistic nylon details on the front flap."
     }),
-		    new Product({
+        new Product({
         imagePath: "https://s1.postimg.org/1hp4ebjqjf/Bag14.jpg",
         name:"Official DC Comics Distressed Batman Classic Logo Street Messenger Sling Bag - Black and Yellow",
         price: 62,
         stock: 100,
         categories: ['bags','Sling Bag','black bag','Women'],
-		description: "Approximately 14' long (not including length of strap) and 14.5' wide"
+		description: "Approximately 14inch long (not including length of strap) and 14.5inch wide"
     }),
-		    new Product({
+        new Product({
         imagePath: "https://s1.postimg.org/2h57rhoukr/Bag15.jpg",
         name:"Batman Symbol Logo Graphic Messenger Bag",
         price: 34,
@@ -125,9 +125,9 @@ var products = [
         categories: ['bags','Sling Bag','black bag','Women'],
 		description: "Made from 100% high quality materials"
     }),
-		    new Product({
+        new Product({
         imagePath: "https://s1.postimg.org/6wnmwqzbcr/Bag16.jpg",
-        name:"Batman Symbol Logo Graphic Messenger Bag",
+        name:"DC Comics Batman Envelope Purse, Clutch, Chain Strap",
         price: 24,
         stock: 100,
         categories: ['bags','Sling Bag','Golden black bag','Women'],
@@ -135,11 +135,11 @@ var products = [
     }),
 	    new Product({
         imagePath: "https://s1.postimg.org/7sk4c79my3/Bag17.jpg",
-        name:"Batman Symbol Logo Graphic Messenger Bag",
+        name:"Batman Golden Bag",
         price: 34,
         stock: 100,
         categories: ['bags','Sling Bag','Golden bag','Women'],
-		description: "Approximately 14' long (not including length of strap) and 14.5' wide"
+		description: "Very nice for those Batman Or Comic Fans. Ladies clutch wallet."
     })
 ];
 

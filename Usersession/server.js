@@ -35,3 +35,25 @@ app.get('/logout',function(req,res){
 app.listen(3000,function(){
     console.log("App Started on PORT 3000");
 });
+
+router.get('/',function(req,res){
+    res.render('index.html');
+});
+
+router.post('/login',function(req,res){
+    handle_database(req,"login",function(response){
+        if(response === null) {
+            res.json({"error" : "true","message" : "Database error occured"});
+        } else {
+            if(!response) {
+              res.json({
+                             "error" : "true",
+                             "message" : "Login failed ! Please register"
+                           });
+            } else {
+               req.session.key = response;
+                   res.json({"error" : false,"message" : "Login success."});
+            }
+        }
+    });
+});

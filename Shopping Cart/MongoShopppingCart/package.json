@@ -1,0 +1,23 @@
+{
+  "name": "mongoshoppingcart",
+  "version": "1.0.0",
+  "description": "This is a backup mongodb based ShoppingCart. In case Riak doesn't pan out.",
+  "main": "index.js",
+  "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon ./index.js --exec babel-node -e js"
+  },
+  "author": "Utsav Jain",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.0",
+    "nodemon": "^1.12.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}

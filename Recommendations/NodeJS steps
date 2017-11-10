@@ -26,3 +26,16 @@ Update the package.json, add:
 “request” : “*”
 and again say npm install.
 
+To parse the request body coming from POST request, use bodyparser urleccoded as:
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+// express.bodyParser() – deprecated.
+
+While giving a request with json body:
+Set request headers as:
+Content-Type : application/json
+char-set : utf-8
+
+

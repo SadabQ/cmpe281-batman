@@ -37,3 +37,7 @@ Week 6
 Team is making progress on modelling and building the application based on the proposed application data flow and 
 application pattern queries. We met this week and added to the data model and patterns to limit the number of queries. This will help the team
 to build modules to support essential queries.
+
+Week 7
+Team discussed on endpoints and common interfaces. We discussed on the UI part and started working on it with keeping the event 
+generation logic under the common interface. This should help in making the development easier to implement and uniform.

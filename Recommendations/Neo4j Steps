@@ -1,0 +1,100 @@
+1.	Install neo4j image in docker;
+
+2.	Start neo4j (create container)
+docker run \ --publish=7474:7474 --publish=7687:7687 \ --volume=$HOME/neo4j/data:/data \ --volume=$HOME/neo4j/logs:/logs \ neo4j
+
+
+Starting neo4j with apoc:
+
+We need to have apoc jar files inside the plugins folder for neo4j that has been created to your local computer on your users path for your docker as soon as you run the neo4j in docker.
+
+So create a plugins folder inside neo4j (where data and logs folders already exist) and then download the jar file for apoc from 
+https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/3.3.0.1
+and put this jar file inside plugins. (All instructions:
+http://blog.armbruster-it.de/2017/05/running-neo4j-3-2-apoc-docker/
+)
+
+then:
+
+docker run --rm -e NEO4J_AUTH=none \
+   -e NEO4J_dbms_security_procedures_unrestricted=apoc.\\\* \
+   -v $PWD/plugins:/plugins \
+   -p 7474:7474  -p 7687:7687 neo4j
+
+--
+
+docker run --rm -e NEO4J_AUTH=none \
+   -e NEO4J_dbms_security_procedures_unrestricted=apoc.\\\* \
+   -v $PWD/neo4j/plugins:/plugins \
+   -v $PWD/neo4j/data:/data \
+   -v $PWD/neo4j/logs:/logs \
+   -p 7474:7474  -p 7687:7687 neo4j
+
+
+Also, - e NEO4J_AUTH=none can be removed and command can be made as:
+docker run --rm -e NEO4J_dbms_security_procedures_unrestricted=apoc.\\\* \
+   -v $PWD/neo4j/plugins:/plugins \
+   -v $PWD/neo4j/data:/data \
+   -v $PWD/neo4j/logs:/logs \
+   -p 7474:7474  -p 7687:7687 neo4j
+
+
+To get it with configurations:
+--volume=$HOME/neo4j/conf:/conf \
+    neo4j:3.1 dump-config
+
+docker run --rm -e NEO4J_AUTH=none \
+   -e NEO4J_dbms_security_procedures_unrestricted=apoc.\\\* \
+   -v $PWD/neo4j/plugins:/plugins \
+   -v $PWD/neo4j/data:/data \
+   -v $PWD/neo4j/logs:/logs \
+   -v $PWD/neo4j/conf:/conf  \
+   -p 7474:7474  -p 7687:7687  \
+   neo4j dump-config
+
+//dump-config will dump the original cong file contents.
+Now, we can access it with 
+http://192.168.99.100:7474/   over the browser
+Now that to create the content based recommendations, we need to fetch the data from our product catalog (which for my case is created using MongoDB). Since I do not have the access to this database, I am going to create a mock ProductCatalog database for my service. 
+
+Following is the schema I am following for my mock Product Catalog:
+
+Schema({
+
+    title: { type: String, required: true, trim: true },
+
+    price: { type: Number, required: true, min: 0 },
+
+    stock: { type: Number, default: 1 },
+
+    description: String,
+
+    imageBin: { data: Buffer, contentType: String },
+
+    imageUrl: String,
+
+    categories: [{ type: String }]
+
+})
+
+
+
+
+
+Let’s create a mock database. (MockPRoductCatalog.json)
+
+TO save it into mongodb, install mongodb in docker and start it:
+$ docker run -td --name mongo -p 27017:27017 mongo
+$ docker exec -it mongo mongo
+
+I already have the mongo container for my docker. So I simply start that container and execute it:
+$ docker start 4c40d9241985
+$ docker exec -it mongo mongo
+
+Start mongodb with rest interface and then we can access the mongodb with the rest http call.
+Do:
+$ docker pull linuxenko/mongo-rest
+$ docker run -p 3000:3000 -d linuxenko/mongo-rest
+$ docker exec -it linuxenko/mongo-rest linuxenko/mongo-rest
+docker run -td –name linuxenco/mongo-rest –p 3000:3000 linuxenco/mongo-rest
+

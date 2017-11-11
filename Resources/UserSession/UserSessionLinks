@@ -37,6 +37,7 @@ Three Redis Data Structures
 
 First, we need a Redis LIST to accrete the events. 
 In essence this accumulates the line items, or log style events, under a combined user/session key.
+https://www.npmjs.com/package/connect-redis-sessions
 
 Second, we need a Redis SET of all the known sessions.
 It's mostly a bookeeping set of userSessionKeys for both active sessions and ready to be processed sessions.
@@ -64,3 +65,4 @@ https://deliveroo.engineering/2016/10/07/optimising-session-key-storage.html
 Impotant Links:-
 https://codeforgeek.com/2016/06/node-js-redis-tutorial-installation-commands/
 https://github.com/NodeRedis/node_redis#options-object-properties
+https://www.npmjs.com/package/connect-redis-sessions

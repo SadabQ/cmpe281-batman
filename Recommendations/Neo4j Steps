@@ -111,3 +111,21 @@ $mongod –rest
 Where mongoDB is running on your localhost, and exposed on port 28017(which is port for rest api access). /test/test/  is  dbname/collectionname. The localhost port for own system is 127.0.0.1 but since our neo4j is not on our machine’s Ip, so is considered as another machine. SO, to access the mongodb, we cannot say:
 Localhost/ or 127.0.0.1/ but we need to give the ip address of our machine.
 
+DB SCHEMA:
+CREATE(:Product)-[:isTypeOf]->(:Category)
+
+Or
+Load the product catalog data and simultaneously create the schema as:
+CALL apoc.load.json('http://10.0.0.90:3000/getProductCatalog') YIELD value as product
+MERGE(p:Product{_id : product._id['$oid']})
+ON CREATE SET p.name = product.name
+WITH product, p
+
+FOREACH (category in product.categories |
+MERGE(cat:Category{name : category})
+MERGE (p)-[:HAS_CATEGORY]->(cat)
+)
+WITH product, p
+
+RETURN *
+

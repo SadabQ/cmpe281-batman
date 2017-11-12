@@ -9,3 +9,6 @@
 #WEEK 5 This week we did scrum. Scrum is a framework for managing software development. It is designed for teams of three to nine developers who break their work into actions that can be completed within fixed duration cycles (called "sprints"), track progress and re-plan in daily 15-minute stand-up meetings, and collaborate to deliver workable software every sprint.
 
 #WEEK 6 This week was a scare. The entire team tried to run the Riak's client application and was not able to successfully CRUD it. So, we decided to use Project Voldemort instead. Project Voldemort is alsa an AP key value database and thus would be a proper replacement for Riak. However, upon more research, we found that it hasn't been updated since 2014. So, I gave another run at Riak and was able to run the sample Riak client NodeJs Application. 
+
+#WEEK 7
+This was the penultimate week and thus the heat was on high. We worked together and pooled our work together and have now created an integrated product. Since scurm facilitates methods for effective communication, there was less difficulty in figuring out a way to talk. The next week will be our last. All loose will need to be found and dealt with. We will need to finish our diagrams and personal requirements. 

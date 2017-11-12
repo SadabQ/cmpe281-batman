@@ -27,4 +27,5 @@ Week6:
 During the sixth meet, got feedback from all team members and decided the domain of our website. Since, our team name is Batman, with everyone's consent we decided to show Batman  merchandise like Batman shirt, mugs, Wall Hanging, Bags, toys, lamps, shoes, caps, Watches etc. Also, Discussed everyone's progress on their application domain and research.
 
 Week7: 
-
+During the seventh meet, we discussed about the progress made by each team member in each track and discussed final endpoints API name. Product catalog design is being updated on a regular basis to add more variety of products. Also, discussed the data flow of Recommendations part and integration to different module.
+Actual Implementation of functionalities has started.

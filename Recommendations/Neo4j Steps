@@ -98,3 +98,34 @@ $ docker run -p 3000:3000 -d linuxenko/mongo-rest
 $ docker exec -it linuxenko/mongo-rest linuxenko/mongo-rest
 docker run -td –name linuxenco/mongo-rest –p 3000:3000 linuxenco/mongo-rest
 
+
+
+For now, we are sticking to mongodb and not mongo-rest. At real time we will fetch data from mongodb product catalog. For now, we create some mock data and include to our nodejs (or hardcode) and connect with neo4j.
+
+
+Run a query to load json from an http :
+CALL apoc.load.json('http://10.0.0.90:28017/test/test/') YIELD value UNWIND value.rows as course RETURN course LIMIT 10
+
+Start mongodb on local by saying
+$mongod –rest
+Where mongoDB is running on your localhost, and exposed on port 28017(which is port for rest api access). /test/test/  is  dbname/collectionname. The localhost port for own system is 127.0.0.1 but since our neo4j is not on our machine’s Ip, so is considered as another machine. SO, to access the mongodb, we cannot say:
+Localhost/ or 127.0.0.1/ but we need to give the ip address of our machine.
+
+DB SCHEMA:
+CREATE(:Product)-[:isTypeOf]->(:Category)
+
+Or
+Load the product catalog data and simultaneously create the schema as:
+CALL apoc.load.json('http://10.0.0.90:3000/getProductCatalog') YIELD value as product
+MERGE(p:Product{_id : product._id['$oid']})
+ON CREATE SET p.name = product.name
+WITH product, p
+
+FOREACH (category in product.categories |
+MERGE(cat:Category{name : category})
+MERGE (p)-[:HAS_CATEGORY]->(cat)
+)
+WITH product, p
+
+RETURN *
+

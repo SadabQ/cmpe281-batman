@@ -1,18 +1,27 @@
-var http = require('http')
-, r = require('request')
-, txUrl = 'http://192.168.99.100:7474/db/data/transaction/commit'
+//var http = require('http')
+var r = require('request')
+, dbUrl = 'http://192.168.99.100:7474/db/data/transaction/commit'
 
-exports.storeData = function(req, res){
-	var query='MATCH (n) RETURN COUNT(n)'
-	var params={limit: 10}
-	var cb=function(err,data) { res.end(JSON.stringify(data)) }
-	cypher(query, params, cb, res)
-}
-function cypher(query,params,cb, res) {
-  r.post({uri:txUrl,
-          json:{statements:[{statement:query,parameters:params}]}},
-         function(err,res) { cb(err,res.body)})
+// Helper function for storData
+function cypher(query,params,res, callback) {
+  r.post({uri:dbUrl,json:{statements:[{statement:query,parameters:params}]}},function(err,res){
+  	if(err){
+  		console.log("ERROR: " + err.message);
+  	}else{
+  		callback(err,res.body)
+  	}
+  })
   res.writeHead(200, {'content-type' : 'application/json'})
-  //res.end(body)
-  //res.end(cb(err,res.body))
 }
+function getSimilarProducts(query,params,res, callback){
+	r.post({uri:dbUrl,json:{statements:[{statement:query,parameters:params}]}},function(err,res){
+  	if(err){
+  		console.log("ERROR: " + err.message);
+  	}else{
+  		callback(err,res.body)
+  	}
+  })
+  res.writeHead(200, {'content-type' : 'application/json'})
+}
+exports.getSimilarProducts = getSimilarProducts
+exports.cypher = cypher

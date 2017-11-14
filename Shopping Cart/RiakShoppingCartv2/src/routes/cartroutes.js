@@ -1,7 +1,9 @@
 import {
     viewAllCarts,
     vierCartbyID,
-    updateCartbyID
+    updateCartbyID,
+    removeItemFromCart,
+    updateQty
 } from '../controllers/cartcontrollers';
 
  const routes = (app) => {
@@ -11,6 +13,8 @@ import {
     app.route('/cart/:email')
     .get(vierCartbyID)
     .post(updateCartbyID)
+    .delete(removeItemFromCart)
+    .put(updateQty)
 
 }
 

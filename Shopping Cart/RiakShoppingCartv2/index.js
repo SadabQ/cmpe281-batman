@@ -1,3 +1,20 @@
+/*
+Node / Express: EADDRINUSE, Address already in use - Kill server
+
+First, you would want to know which process is using port 3000
+
+sudo lsof -i :3000
+
+this will list all PID listening on this port, once you have the PID you can terminate it with the following:
+
+kill -9 {PID}
+
+
+
+*/
+
+
+
 import express from 'express';
 import routes from './src/routes/cartroutes';
 import bodyParser from 'body-parser';

@@ -13,7 +13,8 @@
     "basho-riak-client": "^2.4.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "simpleriak": "^0.1.10"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

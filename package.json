@@ -1,0 +1,19 @@
+{
+  "name": "h",
+  "version": "1.0.0",
+  "description": "Hello! This is a project to build a cloud based shopping cart service with a highly advanced backend Individual tasks: Backend database and project domains. Group tasks: Front end development and maintenance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nguyensjsu/cmpe281-batman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nguyensjsu/cmpe281-batman/issues"
+  },
+  "homepage": "https://github.com/nguyensjsu/cmpe281-batman#readme"
+}

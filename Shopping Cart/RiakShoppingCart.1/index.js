@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import riakClient from 'basho-riak-client';
 import routes from './src/routes/riakRoutes';
+var riak = require('simpleriak').createClient({ host: 'localhost', port: 8098, bucket: 'test' });
+
 var config = require('./config');
 
 const app = express();

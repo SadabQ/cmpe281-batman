@@ -24,3 +24,18 @@ module.exports = {
                     quantity: request.quantity
                 }
             },
+      get : function (request, callback){
+        setTimeout( function(){
+            rs.get({
+               app: rsapp,
+               token: request.token
+            },
+            function(err, resp){
+                if(err)
+                    return callback(err);
+                return callback(resp);
+            });
+
+        }, 200);
+    },      
+                      

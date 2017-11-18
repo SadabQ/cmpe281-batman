@@ -38,4 +38,17 @@ module.exports = {
 
         }, 200);
     },      
-                      
+       kill : function(request, callback){
+        setTimeout(function(){
+            rs.kill({
+                app: rsapp,
+                token: request.token
+            },
+            function(err, resp){
+                if(err)
+                    return callback(err);
+                return callback(resp);
+            });
+        }, 300);
+    }
+  };          

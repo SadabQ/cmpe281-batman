@@ -13,3 +13,5 @@ Week 5 - Implementation of the project has been started and is at its initial le
 Week 6 - During last meet, every member developed small POC of thier work and discussed issues they faced.
 
 Week 7 - Project members are progressing very well, but difficulties are faced while making node clusters and while dockerizing the noSQL database. Also discussed about structure of front-end of website
+
+Week 8 - It took a shift of technology from Voldermort back to Riak. Built our successful server side application. We have started our front end part.  

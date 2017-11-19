@@ -41,3 +41,9 @@ to build modules to support essential queries.
 Week 7
 Team discussed on endpoints and common interfaces. We discussed on the UI part and started working on it with keeping the event 
 generation logic under the common interface. This should help in making the development easier to implement and uniform.
+
+Week 8
+Team started testing integration of basic services to complete one worflow from end to end, this way we can build the system in a organized
+way and easy to test and document.
+
+

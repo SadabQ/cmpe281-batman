@@ -29,3 +29,7 @@ During the sixth meet, got feedback from all team members and decided the domain
 Week7: 
 During the seventh meet, we discussed about the progress made by each team member in each track and discussed final endpoints API name. Product catalog design is being updated on a regular basis to add more variety of products. Also, discussed the data flow of Recommendations part and integration to different module.
 Actual Implementation of functionalities has started.
+
+Week8:
+During the eighth meet, Frontend development kicked off from this week. After getting feedback from all team members, Responsibilities with respect to UI development is decided. Also, Individual tasks with respect to backend is discussed.  
+More products categories was decided which will be included in this project.

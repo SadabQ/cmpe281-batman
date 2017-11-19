@@ -16,14 +16,6 @@ exports.storeData = function(req, res){
 	})
 }
 
-//Content Based recommendation, taking out the category from request body, querying the db to get products with same category and returning the product
-// exports.suggestSimilarProducts = function(req, res){
-// 	var category = req.body.category
-// 	var query = "MATCH (p:Product)--(c:Category{c.name: 'bags'}) RETURN p"
-// 	var params = {}
-// 	res.writeHead(200, {'content-type' : 'application/json'})
-// 	res.end(JSON.stringify(req.body))
-// }
 function suggestSimilarProducts(req, res){
 	var category = req.body.category
 	console.log(category)
@@ -36,7 +28,5 @@ function suggestSimilarProducts(req, res){
 		console.log(data)
 		res.end(JSON.stringify(data))
 	})
-	//res.writeHead(200, {'content-type' : 'application/json'})
-	//res.end(JSON.stringify(req.body))
 }
 exports.suggestSimilarProducts = suggestSimilarProducts

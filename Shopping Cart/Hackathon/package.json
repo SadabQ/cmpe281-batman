@@ -1,0 +1,18 @@
+{
+  "name": "cpserver",
+  "version": "1.0.0",
+  "description": "this is url shortner",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server.js --exec babel-node -e js"
+  },
+  "author": "pranjali",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.3",
+    "nodemon": "^1.12.1"
+  }
+}

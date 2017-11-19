@@ -1,0 +1,13 @@
+{
+  "name": "recommendationEngine_v1",
+  "description": "Recommendation Engine for e-commerce retailer",
+  "version": "1.0.0",
+  "private": "true",
+  "dependencies": {
+    "crypto": "0.0.3",
+    "express": "3.x",
+    "mongodb": "^2.2.33",
+    "node-rest-client": "3.1.0",
+    "request": "*"
+  }
+}

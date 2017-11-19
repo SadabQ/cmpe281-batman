@@ -1,8 +1,5 @@
-//var http = require('http')
 var r = require('request')
 , dbUrl = 'http://192.168.99.100:7474/db/data/transaction/commit'
-
-// Helper function for storData
 function cypher(query,params,res, callback) {
   r.post({uri:dbUrl,json:{statements:[{statement:query,parameters:params}]}},function(err,res){
   	if(err){

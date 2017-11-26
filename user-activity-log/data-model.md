@@ -50,7 +50,7 @@ PRIMARY KEY ((username, interaction_time), product_id)
 
 product_purchased_user
 
-CREATE TABLE product_added_cart_user (
+CREATE TABLE product_purchased_user (
 username varchar,
 product_id varchar,
 purchased_time timeuuid,

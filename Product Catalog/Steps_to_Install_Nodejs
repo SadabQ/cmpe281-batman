@@ -3,6 +3,7 @@ Setting Up Node.js on an Amazon EC2 Instance
 
 1. Connect to your Linux instance as ec2-user using SSH.
 2. Install the current version of node version manager (nvm) by typing the following at the command line to install version 33.6.
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 3. Activate nvm by typing the following at the command line.
 	. ~/.nvm/nvm.sh
 4. Use nvm to install the version of Node.js you intend to use by typing the following at the command line.

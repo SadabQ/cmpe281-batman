@@ -29,7 +29,7 @@ Setting Up the Single test instance EC2 server for installing mongo-db:
 	d. Make a new Custom TCP on port 27017, Source: Anywhere, 0.0.0.0/0
 
 4. Configuring Mongo-db configuration file for the remote connection:
-	a.In the /etc/mongo.conf file comment out the line #bind 127.0.0.1 to take the connections from anywhere.
+	a.In the /etc/mongod.conf file comment out the line #bind 127.0.0.1 to take the connections from anywhere.
 	b.Restart the service using : sudo service mongod restart.
 	c.verify that mongo-db has started successfully by going to /var/log/mongodb/mongod.log and check for the line 
 	  waiting for connections on port 27017
@@ -40,13 +40,13 @@ Setting Up the Single test instance EC2 server for installing mongo-db:
 	a.Make a test database in mongo db using : use cmpe281
 	b.Add data to the collection: db.cmpe281.insert({"a":1})
 	c.Add a user for this database using the following code:
-		use test
+		use cmpe281
 		db.createUser(
     		{
       			user: "suchi",
      	 		pwd: "1234",
       			roles: [
-         		{ role: "readWrite", db: "test" }
+         		{ role: "readWrite", db: "cmpe281" }
      		 	]
    	 	}
 		)

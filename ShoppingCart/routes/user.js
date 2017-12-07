@@ -17,7 +17,9 @@ router.get('/profile',isLoggedIn, function(req, res, next) {
 
 router.get('/logout',isLoggedIn, function(req, res, next) {
     req.logout();
-    res.redirect('/');
+    req.session.destroy(function(){
+        res.redirect('/');
+      });
 });
 
 router.use('/',notLoggedIn, function (req,res,next) {
@@ -53,6 +55,12 @@ module.exports = router;
 function isLoggedIn(req, res, next) {
     //user sessions are automatically managed by passport, if user is loggedin,(isAuthenticated() is set to true), then continue.
     if (req.isAuthenticated()){
+        console.log("req: ", req.user._id);
+        //this will tell paspport how to store user in a session.
+        passport.serializeUser(function (user,done) {
+            //it means when you want to store your user in a session , serialize it by id
+            done(null,req.user._id);
+});
         return next();
     }
     res.redirect('/');

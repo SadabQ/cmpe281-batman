@@ -1,0 +1,39 @@
+ <div class="desccontainer">
+     <div id="parent">
+         <div id="child">
+             <img src="{{products.imagePath}}" height="300px" width="300px">
+         </div>
+
+         <div id="child">
+             <h3><b>{{products.name}}</b></h3>
+             <br>
+                 <label>Price: ${{products.price}}</label>
+                 <br>
+                 <br><br>
+                 <label>Product Description</label><br>
+                 <div>{{products.description}}</div>
+                 <br><br><br>
+                 <a href="/add-to-cart/{{products._id}}" class="btn btn-success pull-right" role="button">Add To Cart</a>
+         </div>
+     </div>
+ </div>
+<div class="container_trending">
+    <h3 align="left" style= "padding: 16px;">Similar Products</h3>
+             {{# each recommendedProducts.products}}
+                {{!-- <div class="row"> --}}
+                        <div class="col-sm-1 col-md-4">
+                            <div class="thumbnail">
+                                <a href="/product/{{this._id}}"><img src="{{this.imagePath}}" class="img-responsive"></a>
+                                <div class="caption">
+                                    <h5>{{this.name}}</h5>
+                                    <div class="clearfix">
+                                        <div class="price pull-left">${{this.price}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                {{!-- </div> --}}
+                <br>
+            {{/each}}
+      
+</div>

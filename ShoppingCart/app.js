@@ -13,6 +13,13 @@ var flash = require('connect-flash');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
 
+
+// redis session
+var redis_ip = '35.165.110.164'; 
+var redis           =	  require("redis");
+var redisStore      =	  require('connect-redis')(session);
+var client          =     redis.createClient(6379, redis_ip);
+
 var index = require('./routes/index');
 var userRoutes = require('./routes/user');
 
@@ -23,7 +30,7 @@ var app = express();
 
 //     console.log("Connected To MongoDb");
 // });
-mongoose.connect('localhost:27017/shoppingcart');
+mongoose.connect('13.57.134.28:27017/shoppingcart');
 // mongoose.connect('mongodb://13.57.131.238:27017/shoppingcart?replicaSet=rs0,mongodb://13.57.134.28:27017/shoppingcart?replicaSet=rs0,mongodb://52.53.74.190:27017/shoppingcart?replicaSet=rs0',{useMongoClient:true}, function(err, db){
 //     if(err){
 //         console.log("Error on connection");
@@ -58,7 +65,7 @@ app.use(session({
     secret: 'mysupersecret',
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({mongooseConnection: mongoose.connection}),
+    store: new redisStore({ host: redis_ip, port: 6379, client: client,ttl :  260000}),
     cookie: {maxAge: 180 * 60 * 1000}
 }));
 app.use(flash());

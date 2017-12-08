@@ -10,6 +10,13 @@ router.get('/', function(req, res, next) {
     var trendingChunks = [];
     var productChunks = [];
     var recentChunks = [];
+
+  //  console.log('passport session' + req.session.passport.user);
+    var email_id = req.cookies['userEmail'];
+
+    console.log('sharedEmailId ' + req.cookies['cookiename']);
+
+    console.log('userEmail ' + req.cookies['userEmail']);
   Product.find(function (err,docs) {
 
     var chunkSize = 3;
@@ -50,7 +57,7 @@ router.get('/', function(req, res, next) {
 
                 //Recently viewed Products
                 var recentProductId = [];
-                var hit = '/activity/useractivity/products?email=' + 'sadabq'
+                var hit = '/activity/useractivity/products?email=' + email_id;
 
                 var options = {
                    hostname: 'ec2-52-38-92-39.us-west-2.compute.amazonaws.com',
@@ -159,10 +166,14 @@ function suggestProducts(selectedProduct,res,callback){
       request.end();
 }
 
-function addCart(selectedProduct,res,callback){
+function addCart(selectedProduct,req,res,callback){
   console.log("Inside callProducts Function");
 
-    var emailId = '/cart/' +  'sadabqtest';
+    var cookie_email_id = req.cookies['userEmail'];
+
+
+
+    var emailId = '/cart/' +  cookie_email_id;
   var http = require("http");
   var options = {
     hostname: '13.56.77.198',
@@ -219,7 +230,7 @@ function logProducts(selectedProduct,res,callback){
   	  console.log('problem with request: ' + e.message);
   	});
   	// write data to request body
-  	request.write('{ "user_id": "sadabq", "tags": "capp", "productid":'+ selectedProduct._id +', "timestamp": 1512621032979 }');
+  	request.write('{ "user_id": "test@gmail.com", "tags": "capp", "productid":'+ selectedProduct._id +', "timestamp": 1512621032979 }');
   	request.end();
 }
 
@@ -290,7 +301,9 @@ router.get('/search/:text', function(req, res, next) {
 router.get('/add-to-cart/:id',function (req,res,next) {
   var productId = req.params.id;
 
-  var emailId = '/cart/' +  'sadabqtest';
+  var cookie_email_id = req.cookies['userEmail'];
+
+  var emailId = '/cart/' +  cookie_email_id;
 
   var cart;
 
@@ -315,7 +328,7 @@ router.get('/add-to-cart/:id',function (req,res,next) {
     var body = Buffer.concat(bodyChunks);
      console.log('BODY: ' + body);
     var p = JSON.parse(body);
-    cart = new Cart(p);
+    cart = new Cart(p ? p : {});
     console.log('BODY: ' + p);
 
     Product.findById(productId, function (err,product) {
@@ -324,11 +337,11 @@ router.get('/add-to-cart/:id',function (req,res,next) {
         }
         cart.add(product, product.id);
 
-        addCart(cart,res,function(data){
+        addCart(cart,req,res,function(data){
           console.log("DATA IS " + data);
       });
 
-      //  req.session.cart = cart;
+        req.session.cart = cart;
     //    console.log(req.session.cart);
         res.redirect('/');
     });
@@ -358,8 +371,11 @@ request.on('error', function(e) {
 router.get('/shopping-cart', function (req,res,next) {
 
   //var cart = new Cart(req.session.cart ? req.session.cart : {});
+  var email_id = req.cookies['userEmail']
 
-  var emailId = '/cart/' +  'sadabqtest';
+  console.log('/shopping-cart email_id:' + email_id);
+      var emailId = '/cart/' +  email_id;
+//  var emailId = '/cart/' +  'test@gmail.com';
 
   var http = require("http");
   var options = {
@@ -376,10 +392,12 @@ router.get('/shopping-cart', function (req,res,next) {
     bodyChunks.push(chunk);
   }).on('end', function() {
     var body = Buffer.concat(bodyChunks);
-     console.log('BODY: ' + body);
+     // console.log('BODY: ' + body);
     var p = JSON.parse(body);
-    console.log('BODY: ' + p);
-    var cart = new Cart(p);
+    // console.log('BODY: ' + p);
+    //if(req.session.cart ? req.session.cart : {}
+    var cart = new Cart(p ? p : {});
+    req.session.cart = cart;
   // res.send(p);
   res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
   })
@@ -391,8 +409,248 @@ request.on('error', function(e) {
 
 });
 
+// router.get('/reduce/:id', function (req, res, next) {
+//     var productId = req.params.id;
+//     var cart = new Cart(req.session.cart ? req.session.cart : {});
+//
+//     cart.reduceByOne(productId);
+//     req.session.cart = cart;
+//     res.redirect('/shopping-cart');
+// });
 
-router.get('/add-to-cart/:id',function (req,res,next) {
+router.get('/reduce/:id', function (req, res, next) {
+    var productId = req.params.id;
+  //  var cart = new Cart(req.session.cart ? req.session.cart : {});
+    // var emailId = '/cart/' +  'test@gmail.com';
+    var email_id = req.cookies['userEmail']
+
+    console.log('//reduce/:id email_id:' + email_id);
+  //  var email_id = req.cookies['sharedEmailId']
+        var emailId = '/cart/' +  email_id;
+    var http = require("http");
+    var options = {
+      hostname: '13.56.77.198',
+      port: 3000,
+      path: emailId,
+      method: 'GET'
+    };
+    console.log('Heloo der reduce');
+
+    var request = http.get(options, function(response) {
+    var bodyChunks = [];
+    response.on('data', function(chunk) {
+
+      bodyChunks.push(chunk);
+    }).on('end', function() {
+      var body = Buffer.concat(bodyChunks);
+      // console.log('BODY: ' + body);
+      var p = JSON.parse(body);
+  //    console.log('BODY: ' + p);
+      var cart = new Cart(p);
+      console.log(productId);
+      cart.reduceByOne(productId);
+      console.log(cart);
+
+      updatesCart(req,cart);
+    //  req.session.cart = cart;
+    // res.send(p);
+  //  res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+  res.redirect('/shopping-cart');
+    })
+  });
+
+  request.on('error', function(e) {
+    console.log('ERROR: ' + e.message);
+  });
+  //  cart.reduceByOne(productId);
+  //  req.session.cart = cart;
+    //res.redirect('/shopping-cart');
 });
+
+function updatesCart(req,cart)
+{
+  console.log("Inside Update Function");
+  var email_id = req.cookies['userEmail']
+      var emailId = '/cart/' +  email_id;
+  //  var emailId = '/cart/' +  'test@gmail.com';
+  var http = require("http");
+  var options = {
+    hostname: '13.56.77.198',
+    port: 3000,
+    path: emailId,
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    }
+  };
+
+  var request = http.request(options, function(response) {
+   // console.log('Status: ' + res.statusCode);
+   // console.log('Headers: ' + JSON.stringify(res.headers));
+    response.setEncoding('utf8');
+    response.on('data', function (body) {
+      console.log('Body: ' + body)
+    //  res.writeHead(200, {'content-type' : 'application/json'})
+    //  res.end(body)
+    });
+  });
+  request.on('error', function(e) {
+    console.log('problem with request: ' + e.message);
+  });
+  // write data to request body
+  request.write(JSON.stringify(cart));
+  request.end();
+
+}
+
+// var cart = new Cart(req.session.cart ? req.session.cart : {});
+//
+// cart.removeItem(productId);
+// req.session.cart = cart;
+router.get('/remove/:id', function (req, res, next) {
+    var productId = req.params.id;
+
+  //    console.log(req.session.passport.user);
+      var email_id = req.cookies['userEmail']
+
+      console.log('//reduce/:id email_id:' + email_id);
+  //  var shared_email_id = req.cookies['sharedEmailId'];
+
+
+
+        var emailId = '/cart/' +  email_id;
+
+        var http = require("http");
+        var options = {
+          hostname: '13.56.77.198',
+          port: 3000,
+          path: emailId,
+          method: 'GET'
+        };
+        console.log('Heloo der reduce');
+
+        var request = http.get(options, function(response) {
+        var bodyChunks = [];
+        response.on('data', function(chunk) {
+
+          bodyChunks.push(chunk);
+        }).on('end', function() {
+          var body = Buffer.concat(bodyChunks);
+          // console.log('BODY: ' + body);
+          var p = JSON.parse(body);
+      //    console.log('BODY: ' + p);
+          var cart = new Cart(p);
+          // console.log(productId);
+          cart.removeItem(productId);
+          // console.log(cart);
+
+          updatesCart(req,cart);
+        //  req.session.cart = cart;
+        // res.send(p);
+      //  res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+      res.redirect('/shopping-cart');
+        })
+      });
+
+      request.on('error', function(e) {
+        console.log('ERROR: ' + e.message);
+      });
+    //res.redirect('/shopping-cart');
+});
+
+
+router.get('/share/:email', function(req, res, next) {
+    var sharedEmailId = req.params.email;
+    console.log(sharedEmailId);
+
+    res.cookie('sharedEmailId', sharedEmailId, { maxAge: 900000, httpOnly: true });
+    console.log('sharedEmailId ' + req.cookies['sharedEmailId']);
+
+    var trendingChunks = [];
+    var productChunks = [];
+    var recentChunks = [];
+  Product.find(function (err,docs) {
+
+    var chunkSize = 3;
+    for(var i =0; i< docs.length; i +=chunkSize){
+      productChunks.push(docs.slice(i,i + chunkSize));
+    }
+    //trending Products
+    var productId = [];
+
+     var options = {
+       hostname: 'ec2-52-38-92-39.us-west-2.compute.amazonaws.com',
+       port: 8080,
+       path: '/activity/useractivity/trend',
+       method: 'GET'
+     };
+     var request = http.get(options, function(response) {
+
+            // Buffer the body entirely for processing as a whole.
+            var bodyChunks = [];
+            response.on('data', function(chunk) {
+            // You can process streamed parts here...
+            bodyChunks.push(chunk);
+            }).on('end',
+            function() {
+                var body = Buffer.concat(bodyChunks);
+                var p = JSON.parse(body);
+                productId = p.id;
+
+                Product.find({
+                    '_id': {$in: productId}
+                },
+                function (err,prod) {
+                    var chunkSize = 3;
+                    for(var i =0; i< prod.length; i +=chunkSize){
+                        trendingChunks.push(prod.slice(i,i + chunkSize));
+                    }
+                });
+
+                //Recently viewed Products
+                var recentProductId = [];
+                var hit = '/activity/useractivity/products?email=' + sharedEmailId;
+
+                var options = {
+                   hostname: 'ec2-52-38-92-39.us-west-2.compute.amazonaws.com',
+                   port: 8080,
+                   path: hit,
+                   method: 'GET'
+                };
+                var request = http.get(options, function(response) {
+
+                        // Buffer the body entirely for processing as a whole.
+                        var bodyChunks = [];
+                        response.on('data', function(chunk) {
+                        // You can process streamed parts here...
+                        bodyChunks.push(chunk);
+                        }).on('end',
+                        function() {
+                            var body = Buffer.concat(bodyChunks);
+                            var p = JSON.parse(body);
+                            recentProductId = p.id;
+
+                            Product.find({
+                                '_id': {$in: recentProductId}
+                            },
+                            function (err,prodr) {
+                                var chunkSize = 3;
+                                for(var i =0; i< prodr.length; i +=chunkSize){
+                                    recentChunks.push(prodr.slice(i,i + chunkSize));
+                                }
+                            });
+
+                            res.render('shop/index', { title: 'Shopping Cart', products: productChunks , trendingp: trendingChunks, recentp: recentChunks});
+                        })
+                });
+            })
+        });
+    });
+
+});
+
+
+// router.get('/add-to-cart/:id',function (req,res,next) {
+// });
 
 module.exports = router;

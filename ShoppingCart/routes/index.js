@@ -16,12 +16,13 @@ router.get('/', function(req, res, next) {
   console.log(req.user);
 
   var email_id ;
-    if(req.user){
-        console.log(req.user);
-    }
-    else{
-        email_id = req.user.email;
-    }
+  if(req.user){
+      console.log(req.user);
+      email_id = req.user.email;
+  }
+  else{
+      email_id = req.cookies['sharedEmailId'];
+  }
 
     // console.log('sharedEmailId ' + req.cookies['cookiename']);
 

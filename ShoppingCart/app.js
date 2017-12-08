@@ -25,30 +25,8 @@ var userRoutes = require('./routes/user');
 
 var app = express();
 
-// MongoClient.connect("mongodb://13.57.131.238:27017,13.57.134.28:27017,52.53.74.190:27017/shoppingcart?replicaSet=rs0",function(err,db){
-//     if(err) throw err;
+mongoose.connect('mongodb://13.57.131.238:27017,13.57.134.28:27017,52.53.74.190:27017/shoppingcart?replicaSet=rs0',{useMongoClient:true});
 
-//     console.log("Connected To MongoDb");
-// });
-mongoose.connect('13.57.134.28:27017/shoppingcart');
-// mongoose.connect('mongodb://13.57.131.238:27017/shoppingcart?replicaSet=rs0,mongodb://13.57.134.28:27017/shoppingcart?replicaSet=rs0,mongodb://52.53.74.190:27017/shoppingcart?replicaSet=rs0',{useMongoClient:true}, function(err, db){
-//     if(err){
-//         console.log("Error on connection");
-//         console.log(err);
-//     }else{
-//         console.log("Connected");
-//     }
-// });
-//mongoose.connect('mongodb://13.57.131.238:27017,13.57.134.28:27017,52.53.74.190:27017/shoppingcart?replicaSet=rs0',{useMongoClient:true});
-//mongoose.connect('mongodb://34.215.102.31:27017,52.88.114.112:27017,54.70.234.254:27017/shoppingcart?replicaSet=rs0',{useMongoClient:true});
-
-// mongoose.connect('mongodb://13.57.131.238:27017/shoppingcart?replicaSet=rs0',{useMongoClient:true}, function(err, db){
-//     if(err){
-//         console.log(err);
-//     }else{
-//         console.log("Connected");
-//     }
-// });
 require('./config/passport');
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));

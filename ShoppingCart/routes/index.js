@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
     var productId = [];
 
      var options = {
-       hostname: 'ec2-52-38-92-39.us-west-2.compute.amazonaws.com',
+       hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
        port: 8080,
        path: '/activity/useractivity/trend',
        method: 'GET'
@@ -69,7 +69,7 @@ router.get('/', function(req, res, next) {
                 var hit = '/activity/useractivity/products?email=' + email_id;
 
                 var options = {
-                   hostname: 'ec2-52-38-92-39.us-west-2.compute.amazonaws.com',
+                   hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
                    port: 8080,
                    path: hit,
                    method: 'GET'
@@ -222,7 +222,7 @@ function logProducts(selectedProduct,res,callback){
     console.log("Inside callProducts Function");
     var http = require("http");
     var options = {
-      hostname: 'ec2-52-38-92-39.us-west-2.compute.amazonaws.com',
+      hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
       port: 8080,
       path: '/activity/useractivity',
       method: 'POST',
@@ -633,7 +633,7 @@ router.get('/share/:email', function(req, res, next) {
     var productId = [];
 
      var options = {
-       hostname: 'ec2-52-38-92-39.us-west-2.compute.amazonaws.com',
+       hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
        port: 8080,
        path: '/activity/useractivity/trend',
        method: 'GET'
@@ -666,7 +666,7 @@ router.get('/share/:email', function(req, res, next) {
                 var hit = '/activity/useractivity/products?email=' + sharedEmailId;
 
                 var options = {
-                   hostname: 'ec2-52-38-92-39.us-west-2.compute.amazonaws.com',
+                   hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
                    port: 8080,
                    path: hit,
                    method: 'GET'

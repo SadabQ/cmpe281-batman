@@ -12,11 +12,20 @@ router.get('/', function(req, res, next) {
     var recentChunks = [];
 
   //  console.log('passport session' + req.session.passport.user);
-    var email_id = req.cookies['userEmail'];
 
-    console.log('sharedEmailId ' + req.cookies['cookiename']);
+  console.log(req.user);
 
-    console.log('userEmail ' + req.cookies['userEmail']);
+  var email_id ;
+    if(req.user === undefined){
+        console.log(req.user);
+    }
+    else{
+        email_id = req.user.email;
+    }
+
+    // console.log('sharedEmailId ' + req.cookies['cookiename']);
+
+    // console.log('userEmail ' + req.cookies['userEmail']);
   Product.find(function (err,docs) {
 
     var chunkSize = 3;
@@ -169,11 +178,11 @@ function suggestProducts(selectedProduct,res,callback){
 function addCart(selectedProduct,req,res,callback){
   console.log("Inside callProducts Function");
 
-    var cookie_email_id = req.cookies['userEmail'];
+    var email_id = req.user.email;
 
 
 
-    var emailId = '/cart/' +  cookie_email_id;
+    var emailId = '/cart/' +  email_id;
   var http = require("http");
   var options = {
     hostname: '13.56.77.198',
@@ -301,9 +310,9 @@ router.get('/search/:text', function(req, res, next) {
 router.get('/add-to-cart/:id',function (req,res,next) {
   var productId = req.params.id;
 
-  var cookie_email_id = req.cookies['userEmail'];
+  var email_id = req.user.email;
 
-  var emailId = '/cart/' +  cookie_email_id;
+  var emailId = '/cart/' +  email_id;
 
   var cart;
 
@@ -371,7 +380,7 @@ request.on('error', function(e) {
 router.get('/shopping-cart', function (req,res,next) {
 
   //var cart = new Cart(req.session.cart ? req.session.cart : {});
-  var email_id = req.cookies['userEmail']
+  var email_id = req.user.email;
 
   console.log('/shopping-cart email_id:' + email_id);
       var emailId = '/cart/' +  email_id;
@@ -422,7 +431,7 @@ router.get('/reduce/:id', function (req, res, next) {
     var productId = req.params.id;
   //  var cart = new Cart(req.session.cart ? req.session.cart : {});
     // var emailId = '/cart/' +  'test@gmail.com';
-    var email_id = req.cookies['userEmail']
+    var email_id = req.user.email;
 
     console.log('//reduce/:id email_id:' + email_id);
   //  var email_id = req.cookies['sharedEmailId']
@@ -470,7 +479,7 @@ router.get('/reduce/:id', function (req, res, next) {
 function updatesCart(req,cart)
 {
   console.log("Inside Update Function");
-  var email_id = req.cookies['userEmail']
+  var email_id = req.user.email;
       var emailId = '/cart/' +  email_id;
   //  var emailId = '/cart/' +  'test@gmail.com';
   var http = require("http");
@@ -511,7 +520,7 @@ router.get('/remove/:id', function (req, res, next) {
     var productId = req.params.id;
 
   //    console.log(req.session.passport.user);
-      var email_id = req.cookies['userEmail']
+      var email_id = req.user.email;
 
       console.log('//reduce/:id email_id:' + email_id);
   //  var shared_email_id = req.cookies['sharedEmailId'];
@@ -563,8 +572,8 @@ router.get('/share/:email', function(req, res, next) {
     var sharedEmailId = req.params.email;
     console.log(sharedEmailId);
 
-    res.cookie('sharedEmailId', sharedEmailId, { maxAge: 900000, httpOnly: true });
-    console.log('sharedEmailId ' + req.cookies['sharedEmailId']);
+    // res.cookie('sharedEmailId', sharedEmailId, { maxAge: 900000, httpOnly: true });
+    // console.log('sharedEmailId ' + req.cookies['sharedEmailId']);
 
     var trendingChunks = [];
     var productChunks = [];

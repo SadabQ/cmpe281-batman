@@ -15,19 +15,16 @@ router.get('/', function(req, res, next) {
 
   console.log(req.user);
 
-  var email_id ;
-  if(req.user){
-    console.log(req.user);
-    email_id = req.user.email;
-}
-else if(req.cookies['sharedEmailId']){
-    email_id = req.cookies['sharedEmailId'];
-}
-else{ email_id='NoUser'}
+    var email_id ;
+    if(req.user){
+        console.log(req.user);
+        email_id = req.user.email;
+    }
+    else if(req.cookies['sharedEmailId']){
+        email_id = req.cookies['sharedEmailId'];
+    }
+    else{ email_id='NoUser'}
 
-    // console.log('sharedEmailId ' + req.cookies['cookiename']);
-
-    // console.log('userEmail ' + req.cookies['userEmail']);
   Product.find(function (err,docs) {
 
     var chunkSize = 3;
@@ -299,7 +296,7 @@ router.get('/searchCategory/:category', function(req, res, next) {
                 for(var i =0; i< docs.length; i +=chunkSize){
                     productChunks.push(docs.slice(i,i + chunkSize));
                 }
-                //console.log(docs);
+                
             //trending Products
             var productId = [];
     
@@ -370,8 +367,6 @@ router.get('/searchCategory/:category', function(req, res, next) {
                     });
                 })
             });
-
-                //res.render('shop/index', { title: 'Shopping Cart', products: productChunks });
 
             }
         });

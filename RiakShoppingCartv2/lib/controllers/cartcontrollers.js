@@ -26,23 +26,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //import config from '../../config';
 var Riak = require('basho-riak-client');
 
-var riak = require('simpleriak').createClient({
-    host: 'localhost',
-    port: 8098,
-    bucket: 'test'
-});
+// var riak = require('simpleriak').createClient({ 
+//     host: 'localhost',
+//     port: 8098, 
+//     bucket: 'test' 
+// });
 var objtoadd = [];
 
 var viewAllCarts = exports.viewAllCarts = function viewAllCarts(req, res) {
-    riak.getKeys({ bucket: 'cart' }, function (err, reply) {
-        if (err) {
-            console.log('2 Error in getting cart' + err);
-            // res.send(err);
-        }
-        console.log('3' + reply.data); // returns { example: 'object' } 
-        //objtoadd = reply.data;
-        res.json(reply.data);
-    });
+    // riak.getKeys({bucket: 'cart' }, function (err, reply) {
+    //     if(err){
+    //         console.log('2 Error in getting cart'+ err);
+    //        // res.send(err);
+    //     }
+    //     console.log('3'+reply.data); // returns { example: 'object' } 
+    //     //objtoadd = reply.data;
+    //     res.json(reply.data);
+    // });
+    res.send("All Carts");
 };
 var createNewCart = exports.createNewCart = function createNewCart(req, res) {
     console.log('POST cart called');
@@ -96,10 +97,10 @@ var vierCartbyID = exports.vierCartbyID = function vierCartbyID(req, res) {
         });
     } catch (e) {
         console.log('Error');
-        res.send('Fata!');
+        //      res.send('Fata!');
     } finally {
         console.log('Finally$%%%%%%%%%%%%%%%%$$$$$$');
-        //res.send('Fata');
+        // res.send('Fata')
     }
 };
 var updateCartbyID = exports.updateCartbyID = function updateCartbyID(req, res) {

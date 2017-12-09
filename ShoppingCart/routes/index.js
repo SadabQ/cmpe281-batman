@@ -35,7 +35,7 @@ router.get('/', function(req, res, next) {
     var productId = [];
     var hit = '/activity/useractivity/products?email=' + email_id;
      var options = {
-       hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
+       hostname: '52.27.83.151',
        port: 8080,
        path: hit,
        //path: '/activity/useractivity/trend',
@@ -69,7 +69,7 @@ router.get('/', function(req, res, next) {
                 //var hit = '/activity/useractivity/products?email=' + email_id;
 
                 var options = {
-                   hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
+                   hostname: '52.27.83.151',
                    port: 8080,
                    path: '/activity/useractivity/trend',
                    //path: hit,
@@ -247,7 +247,7 @@ function logProducts(selectedProduct,req,res,callback){
 
     var http = require("http");
     var options = {
-      hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
+      hostname: '52.27.83.151',
       port: 8080,
       path: '/activity/useractivity',
       method: 'POST',
@@ -303,13 +303,15 @@ router.get('/searchCategory/:category', function(req, res, next) {
                     productChunks.push(docs.slice(i,i + chunkSize));
                 }
 
-            //trending Products
+            //trending Productsn    
             var productId = [];
+            var hit = '/activity/useractivity/products?email=' + email_id;
     
             var options = {
-                hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
+                hostname: '52.27.83.151',
                 port: 8080,
-                path: '/activity/useractivity/trend',
+                path: hit,
+                //path: '/activity/useractivity/trend',
                 method: 'GET'
             };
             var request = http.get(options, function(response) {
@@ -341,9 +343,9 @@ router.get('/searchCategory/:category', function(req, res, next) {
                     var hit = '/activity/useractivity/products?email=' + email_id;
     
                     var options = {
-                       hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
+                       hostname: '52.27.83.151',
                        port: 8080,
-                       path: hit,
+                       path: '/activity/useractivity/trend',
                        method: 'GET'
                     };
                     var request = http.get(options, function(response) {
@@ -706,10 +708,12 @@ router.get('/share/:email', function(req, res, next) {
     //trending Products
     var productId = [];
 
-     var options = {
-       hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
-       port: 8080,
-       path: '/activity/useractivity/trend',
+    var hit = '/activity/useractivity/products?email=' + sharedEmailId;
+    var options = {
+      hostname: '52.27.83.151',
+      port: 8080,
+      path: hit,
+      //path: '/activity/useractivity/trend',
        method: 'GET'
      };
      var request = http.get(options, function(response) {
@@ -740,7 +744,7 @@ router.get('/share/:email', function(req, res, next) {
                 var hit = '/activity/useractivity/products?email=' + sharedEmailId;
 
                 var options = {
-                   hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
+                   hostname: '52.27.83.151',
                    port: 8080,
                    path: hit,
                    method: 'GET'

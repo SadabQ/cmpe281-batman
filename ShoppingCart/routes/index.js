@@ -296,7 +296,7 @@ router.get('/searchCategory/:category', function(req, res, next) {
                 for(var i =0; i< docs.length; i +=chunkSize){
                     productChunks.push(docs.slice(i,i + chunkSize));
                 }
-                
+
             //trending Products
             var productId = [];
     
@@ -319,9 +319,10 @@ router.get('/searchCategory/:category', function(req, res, next) {
                     var p = JSON.parse(body);
                     productId = p.id;
     
-                    Product.find({
-                        '_id': {$in: productId}
-                    },
+                    // Product.find({
+                    //     '_id': {$in: productId}
+                    // },
+                    Product.find({$and : [{'_id': {$in: productId}}, {'categories': {$regex: category, $options: '-i'}}]},                   
                     function (err,prod) {
                         var chunkSize = 3;
                         for(var i =0; i< prod.length; i +=chunkSize){
@@ -352,9 +353,10 @@ router.get('/searchCategory/:category', function(req, res, next) {
                                 var p = JSON.parse(body);
                                 recentProductId = p.id;
     
-                                Product.find({
-                                    '_id': {$in: recentProductId}
-                                },
+                                // Product.find({
+                                //     '_id': {$in: recentProductId}
+                                // },
+                                Product.find({$and : [{'_id': {$in: recentProductId}}, {'categories': {$regex: category, $options: '-i'}}]},
                                 function (err,prodr) {
                                     var chunkSize = 3;
                                     for(var i =0; i< prodr.length; i +=chunkSize){

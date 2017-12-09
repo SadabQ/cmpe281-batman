@@ -13,11 +13,11 @@ router.get('/', function(req, res, next) {
 
   //  console.log('passport session' + req.session.passport.user);
 
-  console.log(req.user);
+  //console.log(req.user);
 
     var email_id ;
     if(req.user){
-        console.log(req.user);
+        //console.log(req.user);
         email_id = req.user.email;
     }
     else if(req.cookies['sharedEmailId']){
@@ -33,11 +33,12 @@ router.get('/', function(req, res, next) {
     }
     //trending Products
     var productId = [];
-
+    var hit = '/activity/useractivity/products?email=' + email_id;
      var options = {
        hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
        port: 8080,
-       path: '/activity/useractivity/trend',
+       path: hit,
+       //path: '/activity/useractivity/trend',
        method: 'GET'
      };
      var request = http.get(options, function(response) {
@@ -65,12 +66,13 @@ router.get('/', function(req, res, next) {
 
                 //Recently viewed Products
                 var recentProductId = [];
-                var hit = '/activity/useractivity/products?email=' + email_id;
+                //var hit = '/activity/useractivity/products?email=' + email_id;
 
                 var options = {
                    hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
                    port: 8080,
-                   path: hit,
+                   path: '/activity/useractivity/trend',
+                   //path: hit,
                    method: 'GET'
                 };
                 var request = http.get(options, function(response) {
@@ -85,15 +87,18 @@ router.get('/', function(req, res, next) {
                             var body = Buffer.concat(bodyChunks);
                             var p = JSON.parse(body);
                             recentProductId = p.id;
-
+                            console.log(recentProductId);
                             Product.find({
                                 '_id': {$in: recentProductId}
                             },
                             function (err,prodr) {
                                 var chunkSize = 3;
-                                for(var i =0; i< prodr.length; i +=chunkSize){
-                                    recentChunks.push(prodr.slice(i,i + chunkSize));
-                                }
+                                recentChunks = prodr;
+                                console.log(recentChunks);
+                                console.log(prodr);
+                                // for(var i =0; i< prodr.length; i +=chunkSize){
+                                //     recentChunks.push(prodr.slice(i,i + chunkSize));
+                                // }
                             });
 
                             res.render('shop/index', { title: 'Shopping Cart', products: productChunks , trendingp: trendingChunks, recentp: recentChunks});
@@ -154,8 +159,8 @@ router.get('/product/:id', function(req, res, next) {
                 if(data  == null){
                     res.render('shop/productdesc', {products: selectedProduct});
                 }else{
-                    console.log(selectedProduct);
-                    console.log(r);
+                    //console.log(selectedProduct);
+                    //console.log(r);
                     res.render('shop/productdesc', {products: selectedProduct, recommendedProducts: r});
                 }
            });
@@ -262,8 +267,9 @@ function logProducts(selectedProduct,req,res,callback){
   	request.on('error', function(e) {
   	  console.log('problem with request: ' + e.message);
   	});
-  	// write data to request body
-  	request.write('{ "user_id": '+ email_id +', "tags": '+ selectedProduct.categories +', "productid":'+ selectedProduct._id +', "timestamp": 1512621032979 }');
+      // write data to request body
+      //console.log('{ "user_id": '+ email_id +', "tags": '+ selectedProduct.categories +', "productid":'+ selectedProduct._id +', "timestamp": 1512621032979 }');
+  	request.write('{ "user_id": "'+ email_id +'", "tags": "'+ selectedProduct.categories +'", "productid":"'+ selectedProduct._id +'", "timestamp": 1512621032979 }');
   	request.end();
 }
 

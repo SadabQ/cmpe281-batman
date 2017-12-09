@@ -352,7 +352,7 @@ router.get('/searchCategory/:category', function(req, res, next) {
                                 var body = Buffer.concat(bodyChunks);
                                 var p = JSON.parse(body);
                                 recentProductId = p.id;
-    
+                                
                                 // Product.find({
                                 //     '_id': {$in: recentProductId}
                                 // },
@@ -404,15 +404,15 @@ router.get('/search/:text', function(req, res, next) {
 router.get('/add-to-cart/:id',function (req,res,next) {
   var productId = req.params.id;
   console.log('Heloo from else reduce');
-  var email_id;
-  if(req.user){
-    console.log(req.user);
-    email_id = req.user.email;
-}
-else if(req.cookies['sharedEmailId']){
-    email_id = req.cookies['sharedEmailId'];
-}
-else{ email_id='NoUser'}
+    var email_id;
+    if(req.user){
+        console.log(req.user);
+        email_id = req.user.email;
+    }
+    else if(req.cookies['sharedEmailId']){
+        email_id = req.cookies['sharedEmailId'];
+    }
+    else{ email_id='NoUser'}
 
 
   var emailId = '/cart/' +  email_id;
@@ -443,6 +443,7 @@ else{ email_id='NoUser'}
     // console.log('BODY: ' + body);
     var p = JSON.parse(body);
     cart = new Cart(p ? p : {});
+
     //console.log('BODY: ' + p);
 
     Product.findById(productId, function (err,product) {
@@ -450,7 +451,7 @@ else{ email_id='NoUser'}
           return res.redirect('/');
         }
         cart.add(product, product.id);
-
+        req.session.cart = cart;
         addCart(cart,req,res,function(data){
           console.log("DATA IS " + data);
       });
@@ -562,6 +563,7 @@ router.get('/reduce/:id', function (req, res, next) {
       var cart = new Cart(p);
       console.log(productId);
       cart.reduceByOne(productId);
+      req.session.cart = cart;
       console.log(cart);
 
     updatesCart(req,cart);
@@ -607,7 +609,7 @@ else{ email_id='NoUser'}
    // console.log('Headers: ' + JSON.stringify(res.headers));
     response.setEncoding('utf8');
     response.on('data', function (body) {
-      console.log('Body: ' + body)
+      //console.log('Body: ' + body)
     //  res.writeHead(200, {'content-type' : 'application/json'})
     //  res.end(body)
     });
@@ -661,6 +663,7 @@ router.get('/remove/:id', function (req, res, next) {
           var cart = new Cart(p);
           // console.log(productId);
           cart.removeItem(productId);
+          req.session.cart = cart;
           // console.log(cart);
 
           updatesCart(req,cart);

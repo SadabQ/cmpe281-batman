@@ -149,7 +149,7 @@ router.get('/product/:id', function(req, res, next) {
         }
         else{
             selectedProduct = docs;
-            logProducts(selectedProduct,res,function(data){
+            logProducts(selectedProduct,req,res,function(data){
                 console.log("DATA IS " + data);
             });
             suggestProducts(selectedProduct,res,function(data){
@@ -231,8 +231,18 @@ function addCart(selectedProduct,req,res,callback){
   request.end();
 }
 
-function logProducts(selectedProduct,res,callback){
-    console.log("Inside callProducts Function");
+function logProducts(selectedProduct,req,res,callback){
+
+    var email_id;
+    if(req.user){
+        console.log(req.user);
+        email_id = req.user.email;
+    }
+    else if(req.cookies['sharedEmailId']){
+        email_id = req.cookies['sharedEmailId'];
+    }
+    else{ email_id='NoUser'}
+
     var http = require("http");
     var options = {
       hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
@@ -249,16 +259,14 @@ function logProducts(selectedProduct,res,callback){
   	 // console.log('Headers: ' + JSON.stringify(res.headers));
   	  response.setEncoding('utf8');
   	  response.on('data', function (body) {
-  	    // console.log('Body: ' + body)
-  	   // res.writeHead(200, {'content-type' : 'application/json'})
-  	   // res.end(body)
+
   	  });
   	});
   	request.on('error', function(e) {
   	  console.log('problem with request: ' + e.message);
   	});
   	// write data to request body
-  	request.write('{ "user_id": "test@gmail.com", "tags": "capp", "productid":'+ selectedProduct._id +', "timestamp": 1512621032979 }');
+  	request.write('{ "user_id": '+ email_id +', "tags": '+ selectedProduct.categories +', "productid":'+ selectedProduct._id +', "timestamp": 1512621032979 }');
   	request.end();
 }
 

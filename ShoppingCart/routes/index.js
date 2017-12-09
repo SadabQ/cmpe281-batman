@@ -110,7 +110,21 @@ router.get('/', function(req, res, next) {
 
 
 
-
+router.get('/checkout', function(req,res){
+    if(req.user){
+        console.log('Heloo from checkout');
+       email_id = req.user.email;
+      }
+       else{
+           console.log('Heloo from else add-to-cart');
+       email_id = req.cookies['sharedEmailId'];
+       console.log('sharedEmailId'+ req.cookies['sharedEmailId'])
+     }
+     var cart = {};
+     updatesCart(req,cart);
+    
+    res.render('shop/checkout', { title: 'Shopping Cart'});
+});
 
 
 
@@ -190,8 +204,8 @@ function addCart(selectedProduct,req,res,callback){
 
 
     var emailId = '/cart/' +  email_id;
-  var http = require("http");
-  var options = {
+    var http = require("http");
+    var options = {
     hostname: '13.56.77.198',
     port: 3000,
     path: emailId,
@@ -201,14 +215,9 @@ function addCart(selectedProduct,req,res,callback){
     }
   };
 
-  var request = http.request(options, function(response) {
-   // console.log('Status: ' + res.statusCode);
-   // console.log('Headers: ' + JSON.stringify(res.headers));
+    var request = http.request(options, function(response) {
     response.setEncoding('utf8');
     response.on('data', function (body) {
-      //console.log('Body: ' + body)
-    //  res.writeHead(200, {'content-type' : 'application/json'})
-    //  res.end(body)
     });
   });
   request.on('error', function(e) {
@@ -253,6 +262,19 @@ function logProducts(selectedProduct,res,callback){
 //Search by Category
 router.get('/searchCategory/:category', function(req, res, next) {
     var category = req.params.category;
+    var trendingChunks = [];
+    var productChunks = [];
+    var recentChunks = [];
+
+    var email_id;
+    if(req.user){
+        console.log(req.user);
+        email_id = req.user.email;
+    }
+    else{
+        email_id = req.cookies['sharedEmailId'];
+    }
+    
     Product.find({ "categories": {$regex: category, $options: '-i'} })
         .exec(function (err,docs) {
 
@@ -261,13 +283,83 @@ router.get('/searchCategory/:category', function(req, res, next) {
                 return res.status(400).json({success: false, msg: 'Error fetching product from database'});
             }
             else{
-                var productChunks = [];
                 var chunkSize = 3;
                 for(var i =0; i< docs.length; i +=chunkSize){
                     productChunks.push(docs.slice(i,i + chunkSize));
                 }
-                console.log(docs);
-                res.render('shop/index', { title: 'Shopping Cart', products: productChunks });
+                //console.log(docs);
+            //trending Products
+            var productId = [];
+    
+            var options = {
+                hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
+                port: 8080,
+                path: '/activity/useractivity/trend',
+                method: 'GET'
+            };
+            var request = http.get(options, function(response) {
+    
+                // Buffer the body entirely for processing as a whole.
+                var bodyChunks = [];
+                response.on('data', function(chunk) {
+                // You can process streamed parts here...
+                bodyChunks.push(chunk);
+                }).on('end',
+                function() {
+                    var body = Buffer.concat(bodyChunks);
+                    var p = JSON.parse(body);
+                    productId = p.id;
+    
+                    Product.find({
+                        '_id': {$in: productId}
+                    },
+                    function (err,prod) {
+                        var chunkSize = 3;
+                        for(var i =0; i< prod.length; i +=chunkSize){
+                            trendingChunks.push(prod.slice(i,i + chunkSize));
+                        }
+                    });
+    
+                    //Recently viewed Products
+                    var recentProductId = [];
+                    var hit = '/activity/useractivity/products?email=' + email_id;
+    
+                    var options = {
+                       hostname: 'ec2-34-214-59-222.us-west-2.compute.amazonaws.com',
+                       port: 8080,
+                       path: hit,
+                       method: 'GET'
+                    };
+                    var request = http.get(options, function(response) {
+    
+                            // Buffer the body entirely for processing as a whole.
+                            var bodyChunks = [];
+                            response.on('data', function(chunk) {
+                            // You can process streamed parts here...
+                            bodyChunks.push(chunk);
+                            }).on('end',
+                            function() {
+                                var body = Buffer.concat(bodyChunks);
+                                var p = JSON.parse(body);
+                                recentProductId = p.id;
+    
+                                Product.find({
+                                    '_id': {$in: recentProductId}
+                                },
+                                function (err,prodr) {
+                                    var chunkSize = 3;
+                                    for(var i =0; i< prodr.length; i +=chunkSize){
+                                        recentChunks.push(prodr.slice(i,i + chunkSize));
+                                    }
+                                });
+    
+                                res.render('shop/index', { title: 'Shopping Cart', products: productChunks , trendingp: trendingChunks, recentp: recentChunks});
+                            })
+                    });
+                })
+            });
+
+                //res.render('shop/index', { title: 'Shopping Cart', products: productChunks });
 
             }
         });

@@ -11,9 +11,9 @@ var csrfProtection = csrf();
 //All the route included in router should be protected by csrf protection
 router.use(csrfProtection);
 
-router.get('/profile',isLoggedIn, function(req, res, next) {
-    res.render('user/profile');
-});
+// router.get('/profile',isLoggedIn, function(req, res, next) {
+//     res.render('user/profile');
+// });
 
 router.get('/logout',isLoggedIn, function(req, res, next) {
     req.logout();
@@ -32,7 +32,7 @@ router.get('/signup', function(req, res, next) {
 });
 //Take the strategy as parameter
 router.post('/signup', passport.authenticate('local.signup',{
-    successRedirect:'/user/profile',
+    successRedirect:'/user/signin',
     failureRedirect:'/user/signup',
     failureFlash: true
 }));
@@ -43,7 +43,7 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.post('/signin', passport.authenticate('local.signin',{
-    successRedirect:'/user/profile',
+    successRedirect:'/',
     failureRedirect:'/user/signin',
     failureFlash: true
 }));

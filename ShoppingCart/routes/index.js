@@ -513,7 +513,7 @@ else{ email_id='NoUser'}
     var cart = new Cart(p ? p : {});
     req.session.cart = cart;
   // res.send(p);
-  res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+  res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice, email: email_id});
   })
 });
 

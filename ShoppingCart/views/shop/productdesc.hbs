@@ -19,8 +19,9 @@
  </div>
 <div class="container_trending">
     <h3 align="left" style= "padding: 16px;">Similar Products</h3>
-             {{# each recommendedProducts.products}}
-                {{!-- <div class="row"> --}}
+             {{# each recommendedProducts}}
+                <div class="row">
+                    {{# each this}}
                         <div class="col-sm-1 col-md-4">
                             <div class="thumbnail">
                                 <a href="/product/{{this._id}}"><img src="{{this.imagePath}}" class="img-responsive"></a>
@@ -32,7 +33,8 @@
                                 </div>
                             </div>
                         </div>
-                {{!-- </div> --}}
+                    {{/each}}
+                </div>
                 <br>
             {{/each}}
       

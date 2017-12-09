@@ -17,12 +17,13 @@ router.get('/', function(req, res, next) {
 
   var email_id ;
   if(req.user){
-      console.log(req.user);
-      email_id = req.user.email;
-  }
-  else{
-      email_id = req.cookies['sharedEmailId'];
-  }
+    console.log(req.user);
+    email_id = req.user.email;
+}
+else if(req.cookies['sharedEmailId']){
+    email_id = req.cookies['sharedEmailId'];
+}
+else{ email_id='NoUser'}
 
     // console.log('sharedEmailId ' + req.cookies['cookiename']);
 
@@ -112,14 +113,15 @@ router.get('/', function(req, res, next) {
 
 router.get('/checkout', function(req,res){
     if(req.user){
-        console.log('Heloo from checkout');
-       email_id = req.user.email;
-      }
-       else{
-           console.log('Heloo from else add-to-cart');
-       email_id = req.cookies['sharedEmailId'];
-       console.log('sharedEmailId'+ req.cookies['sharedEmailId'])
-     }
+        console.log(req.user);
+        email_id = req.user.email;
+    }
+    else if(req.cookies['sharedEmailId']){
+        email_id = req.cookies['sharedEmailId'];
+    }
+    else{ email_id='NoUser'}
+
+
      var cart = {};
      updatesCart(req,cart);
     
@@ -197,9 +199,10 @@ function addCart(selectedProduct,req,res,callback){
       console.log(req.user);
       email_id = req.user.email;
   }
-  else{
+  else if(req.cookies['sharedEmailId']){
       email_id = req.cookies['sharedEmailId'];
   }
+  else{ email_id='NoUser'}
 
 
 
@@ -271,10 +274,11 @@ router.get('/searchCategory/:category', function(req, res, next) {
         console.log(req.user);
         email_id = req.user.email;
     }
-    else{
+    else if(req.cookies['sharedEmailId']){
         email_id = req.cookies['sharedEmailId'];
     }
-    
+    else{ email_id='NoUser'}
+
     Product.find({ "categories": {$regex: category, $options: '-i'} })
         .exec(function (err,docs) {
 
@@ -391,34 +395,20 @@ router.get('/search/:text', function(req, res, next) {
     });
 });
 
-// router.get('/add-to-cart/:id',function (req,res,next) {
-//   var productId = req.params.id;
-//   var cart = new Cart(req.session.cart ? req.session.cart : {});
-//
-//   Product.findById(productId, function (err,product) {
-//       if (err){
-//         return res.redirect('/');
-//       }
-//       cart.add(product, product.id);
-//       req.session.cart = cart;
-//       console.log(req.session.cart);
-//       res.redirect('/');
-//   });
-// });
 
 router.get('/add-to-cart/:id',function (req,res,next) {
   var productId = req.params.id;
   console.log('Heloo from else reduce');
   var email_id;
   if(req.user){
-    console.log('Heloo from if add-to-cart');
-   email_id = req.user.email;
-  }
-   else{
-       console.log('Heloo from else add-to-cart');
-   email_id = req.cookies['sharedEmailId'];
-   console.log('sharedEmailId'+ req.cookies['sharedEmailId'])
- }
+    console.log(req.user);
+    email_id = req.user.email;
+}
+else if(req.cookies['sharedEmailId']){
+    email_id = req.cookies['sharedEmailId'];
+}
+else{ email_id='NoUser'}
+
 
   var emailId = '/cart/' +  email_id;
 
@@ -478,26 +468,18 @@ request.on('error', function(e) {
 
 });
 
-
-
-// router.get('/shopping-cart', function (req,res,next) {
-//     if(!req.session.cart){
-//         return res.render('shop/shopping-cart', {products: null});
-//     }
-//     var cart = new Cart(req.session.cart);
-//     res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
-// });
 router.get('/shopping-cart', function (req,res,next) {
 
   //var cart = new Cart(req.session.cart ? req.session.cart : {});
   var email_id;
   if(req.user){
-   email_id = req.user.email;
-  }
-   else{
-     console.log('Heloo from else shopping-cart');
-   email_id = req.cookies['sharedEmailId'];
- }
+    console.log(req.user);
+    email_id = req.user.email;
+}
+else if(req.cookies['sharedEmailId']){
+    email_id = req.cookies['sharedEmailId'];
+}
+else{ email_id='NoUser'}
 
   console.log('/shopping-cart email_id:' + email_id);
       var emailId = '/cart/' +  email_id;
@@ -535,15 +517,6 @@ request.on('error', function(e) {
 
 });
 
-// router.get('/reduce/:id', function (req, res, next) {
-//     var productId = req.params.id;
-//     var cart = new Cart(req.session.cart ? req.session.cart : {});
-//
-//     cart.reduceByOne(productId);
-//     req.session.cart = cart;
-//     res.redirect('/shopping-cart');
-// });
-
 router.get('/reduce/:id', function (req, res, next) {
     var productId = req.params.id;
 
@@ -552,12 +525,13 @@ router.get('/reduce/:id', function (req, res, next) {
     // var emailId = '/cart/' +  'test@gmail.com';
     var email_id;
     if(req.user){
-     email_id = req.user.email;
-   }
-     else{
-       console.log('Heloo from else reduce');
-     email_id = req.cookies['sharedEmailId'];
-}
+        console.log(req.user);
+        email_id = req.user.email;
+    }
+    else if(req.cookies['sharedEmailId']){
+        email_id = req.cookies['sharedEmailId'];
+    }
+    else{ email_id='NoUser'}
     console.log('//reduce/:id email_id:' + email_id);
   //  var email_id = req.cookies['sharedEmailId']
         var emailId = '/cart/' +  email_id;
@@ -585,20 +559,14 @@ router.get('/reduce/:id', function (req, res, next) {
       cart.reduceByOne(productId);
       console.log(cart);
 
-      updatesCart(req,cart);
-    //  req.session.cart = cart;
-    // res.send(p);
-  //  res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
-  res.redirect('/shopping-cart');
+    updatesCart(req,cart);
+    res.redirect('/shopping-cart');
     })
   });
 
   request.on('error', function(e) {
     console.log('ERROR: ' + e.message);
   });
-  //  cart.reduceByOne(productId);
-  //  req.session.cart = cart;
-    //res.redirect('/shopping-cart');
 });
 
 function updatesCart(req,cart)
@@ -606,10 +574,13 @@ function updatesCart(req,cart)
   console.log("Inside Update Function");
   var email_id;
   if(req.user){
-   email_id = req.user.email;
-  }
-   else
-   email_id = req.cookies['sharedEmailId'];
+    console.log(req.user);
+    email_id = req.user.email;
+}
+else if(req.cookies['sharedEmailId']){
+    email_id = req.cookies['sharedEmailId'];
+}
+else{ email_id='NoUser'}
 
    console.log('/updatesCart email_id:' + email_id);
 
@@ -645,25 +616,21 @@ function updatesCart(req,cart)
 
 }
 
-// var cart = new Cart(req.session.cart ? req.session.cart : {});
-//
-// cart.removeItem(productId);
-// req.session.cart = cart;
 router.get('/remove/:id', function (req, res, next) {
     var productId = req.params.id;
 
   //    console.log(req.session.passport.user);
     var email_id;
     if(req.user){
-     email_id = req.user.email;
-   }
-     else
-     email_id = req.cookies['sharedEmailId'];
+        console.log(req.user);
+        email_id = req.user.email;
+    }
+    else if(req.cookies['sharedEmailId']){
+        email_id = req.cookies['sharedEmailId'];
+    }
+    else{ email_id='NoUser'}
 
       console.log('//remove email_id:' + email_id);
-  //  var shared_email_id = req.cookies['sharedEmailId'];
-
-
 
         var emailId = '/cart/' +  email_id;
 
@@ -795,9 +762,5 @@ router.get('/share/:email', function(req, res, next) {
     });
 
 });
-
-
-// router.get('/add-to-cart/:id',function (req,res,next) {
-// });
 
 module.exports = router;

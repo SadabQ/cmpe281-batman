@@ -82,11 +82,11 @@ export const vierCartbyID = (req, res) => {
    );}
    catch(e){
        console.log(`Error`);
-       res.send('Fata!');
+    //      res.send('Fata!');
    }
    finally{
        console.log(`Finally$%%%%%%%%%%%%%%%%$$$$$$`)
-       res.send('Fata')
+      // res.send('Fata')
    }
 };
 export const updateCartbyID = (req, res) => {

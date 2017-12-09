@@ -1,6 +1,7 @@
+{{# each trendingp}}
 <div class="container_trending">
     <h3 align="left" style= "padding: 16px;">Recently Viewed Products</h3>
-        {{# each trendingp}}
+        
             <div class="row">
                 {{# each this}}
                     <div class="col-sm-1 col-md-4">
@@ -18,8 +19,9 @@
                 {{/each}}
             </div>
             <br>
-        {{/each}}
-</div>
+    </div>
+{{/each}}
+
 {{!-- <br><br>
 <br>
 <br><br><br>
@@ -39,7 +41,7 @@
                                     <a href="/add-to-cart/{{this._id}}" class="btn btn-success pull-right" role="button">Add To Cart</a>
                                 </div>
                             </div>
-                        </div>
+                        </div>  
                     </div>
                 {{/each}}
             </div>

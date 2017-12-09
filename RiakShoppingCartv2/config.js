@@ -11,7 +11,7 @@ var Riak = require('basho-riak-client');
  //var riakNode = new Riak.RiakNode.build();
  // var riakNodes = [ 'riak-test:10017', 'riak-test:10027', 'riak-test:10037', 'riak-test:10047' ];
 //var riakNodes = [ 'riak@127.0.0.1' ];
-var riakNodes = [ '10.0.0.110:8087', '10.0.0.88:8087', '10.0.0.162' ];
+var riakNodes = [ '10.0.0.110:8087', '10.0.0.88:8087', '10.0.0.162:8087' ];
 
 function Config() { }
 

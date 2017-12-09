@@ -5,23 +5,24 @@ import async from 'async';
 import bodyParser from 'body-parser';
 var Riak = require('basho-riak-client');
 
-var riak = require('simpleriak').createClient({ 
-    host: 'localhost',
-    port: 8098, 
-    bucket: 'test' 
-});
+// var riak = require('simpleriak').createClient({ 
+//     host: 'localhost',
+//     port: 8098, 
+//     bucket: 'test' 
+// });
 var objtoadd = [];
 
 export const viewAllCarts = (req, res) => {
-    riak.getKeys({bucket: 'cart' }, function (err, reply) {
-        if(err){
-            console.log('2 Error in getting cart'+ err);
-           // res.send(err);
-        }
-        console.log('3'+reply.data); // returns { example: 'object' } 
-        //objtoadd = reply.data;
-        res.json(reply.data);
-    });
+    // riak.getKeys({bucket: 'cart' }, function (err, reply) {
+    //     if(err){
+    //         console.log('2 Error in getting cart'+ err);
+    //        // res.send(err);
+    //     }
+    //     console.log('3'+reply.data); // returns { example: 'object' } 
+    //     //objtoadd = reply.data;
+    //     res.json(reply.data);
+    // });
+    res.send("All Carts");
 
 }
 export const createNewCart = (req,res) =>{

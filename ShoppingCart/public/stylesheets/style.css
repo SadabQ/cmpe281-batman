@@ -1,0 +1,59 @@
+.thumbnail img{
+    max-height: 150px;
+}
+.thumbnail {
+    border: 2px solid #3872ac;
+}
+
+.desccontainer img{
+    height: 300px;
+}
+
+.desccontainer {
+    width: 1200px;
+    padding: 16px;
+    height: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 3px solid #3872ac;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    font-family: Helvetica, sans-serif;
+}
+.container_head {
+    border: 1px solid black;
+    color: white;
+    font-family: Helvetica, sans-serif;
+}
+.container_trending {
+    border: 3px solid black;
+    color: black;
+    width:1200px;
+    margin-left: auto;
+    padding: 14px;
+    font-family: Helvetica, sans-serif;
+}
+
+#parent {
+    width: 100%;
+    margin-left: 10px;
+
+}
+#child {
+    width: 45%;
+    float: left;
+    height: 300px;
+    margin-left:20px;
+    margin-top: 30px;
+}
+.price {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+@media(min-width: 768px) {
+    .field-label-responsive {
+        padding-top: .5rem;
+        text-align: right;
+    }
+}
